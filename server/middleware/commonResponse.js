@@ -7,7 +7,7 @@ const defaultResponse = (req, res, next) => {
   }) => {
     if (error) {
       res.status(status).send({
-        success,
+        success: false,
         error,
       });
     } else {

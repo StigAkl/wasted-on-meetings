@@ -1,0 +1,37 @@
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+}
+
+form.login {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+  color: #333;
+}
+
+.formField {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+  width: 50%;
+}
+
+.errorText {
+  color: var(--error);
+}

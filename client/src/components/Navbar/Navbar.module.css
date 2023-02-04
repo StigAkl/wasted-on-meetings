@@ -1,0 +1,101 @@
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+}
+
+header {
+  background: #fff;
+}
+header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+nav a {
+  margin-left: 15px;
+  padding: 10px;
+}
+
+nav button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+}
+
+nav button.logoutButton {
+  margin-left: 15px;
+}
+
+nav button.logoutButton:hover {
+  border: 2px solid var(--error);
+  color: var(--error);
+}
+
+.active {
+  font-weight: bold;
+  color: var(--primary);
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Responsive menu */
+
+.navElements {
+  top: 60px;
+  background-color: #ffffff;
+  display: flex;
+}
+
+.menuIcon {
+  display: none;
+}
+
+.closeBarLink {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .menuIcon {
+    display: block;
+    cursor: pointer;
+  }
+
+  .navElements {
+    position: absolute;
+    right: 0;
+    top: 95px;
+    background-color: #ffffff;
+    width: 0px;
+    height: calc(100vh - 60px);
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navElements a:first-child {
+    margin-top: 30px;
+  }
+
+  .activeBar {
+    width: 270px;
+  }
+}

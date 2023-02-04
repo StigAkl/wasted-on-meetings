@@ -5,8 +5,6 @@ const addRefreshToken = (token, userId) => {
     token,
     userId,
   });
-
-  console.log(refreshTokens);
 };
 
 const removeRefreshTokenByToken = (token) => {

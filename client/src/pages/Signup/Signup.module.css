@@ -1,0 +1,42 @@
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+}
+
+form {
+  max-width: 400px;
+  margin: 100px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  color: #333;
+}
+
+.formField {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.signupButton {
+  background-color: var(--primary);
+  border: 0;
+  padding: 10px;
+  color: #fff;
+  border-radius: 5px;
+  width: 50%;
+}
+
+.errorMessage {
+  color: var(--error);
+}
+
+.inputError {
+  border: 1px solid var(--error);
+}
+
+.loading {
+  color: var(--primary);
+}
