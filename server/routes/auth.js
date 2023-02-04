@@ -9,22 +9,15 @@ authRouter.post("/signin", validateLogin, async (req, res) => {
   const refreshTokenSecret = process.env.refreshTokenSecret;
   const accessTokenSecret = process.env.accessTokenSecret;
 
-  const refreshToken = jwt.sign(
-    {
-      role: roles.user,
-      id: res.user.id,
-    },
-    refreshTokenSecret,
-    { expiresIn: process.env.REFRESH_TOKEN_EXPIRES_IN }
+  const accessToken = signToken(
+    res,
+    process.env.ACCESS_TOKEN_EXPIRES_IN,
+    accessTokenSecret
   );
-
-  const accessToken = jwt.sign(
-    {
-      role: roles.user,
-      id: res.user.id,
-    },
-    accessTokenSecret,
-    { expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN }
+  const refreshToken = signToken(
+    res,
+    process.env.REFRESH_TOKEN_EXPIRES_IN,
+    refreshTokenSecret
   );
 
   refreshTokenService.addRefreshToken(refreshToken, res.user.id);
@@ -36,5 +29,16 @@ authRouter.post("/signin", validateLogin, async (req, res) => {
     },
   });
 });
+
+const signToken = (res, expiresIn, secret) => {
+  return jwt.sign(
+    {
+      role: roles.user,
+      id: res.user.id,
+    },
+    secret,
+    { expiresIn: expiresIn }
+  );
+};
 
 module.exports = authRouter;
