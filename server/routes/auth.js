@@ -3,6 +3,7 @@ const validateLogin = require("../middleware/validateLogin");
 const roles = require("../shared/constants/roles");
 const jwt = require("jsonwebtoken");
 const authRouter = express.Router();
+const refreshTokenService = require("./../services/refreshTokenService");
 
 authRouter.post("/signin", validateLogin, async (req, res) => {
   const refreshTokenSecret = process.env.refreshTokenSecret;
@@ -14,7 +15,7 @@ authRouter.post("/signin", validateLogin, async (req, res) => {
       id: res.user.id,
     },
     refreshTokenSecret,
-    { expiresIn: "7d" }
+    { expiresIn: process.env.REFRESH_TOKEN_EXPIRES_IN }
   );
 
   const accessToken = jwt.sign(
@@ -23,8 +24,10 @@ authRouter.post("/signin", validateLogin, async (req, res) => {
       id: res.user.id,
     },
     accessTokenSecret,
-    { expiresIn: "1h" }
+    { expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN }
   );
+
+  refreshTokenService.addRefreshToken(refreshToken, res.user.id);
 
   res.sendResponse({
     data: {
