@@ -15,10 +15,10 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(commonResponse);
 
-const userRouter = require("./routes/users");
+const userRouter = require("./routes/user");
 const authRouter = require("./routes/auth");
 
-app.use("/api/v1/users", userRouter);
+app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auth", authRouter);
 
 app.listen(port, () => {

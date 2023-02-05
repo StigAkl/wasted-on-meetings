@@ -18,14 +18,14 @@ const Login = () => {
       password
     })
 
-    console.log(response.status);
+    console.log(response.data.data);
   }
 
   return (
     <form onSubmit={onSubmit}>
       <div>
-        <label>Username</label>
-        <input type="text" onChange={(e) => setEmail(e.target.value)} value={email} />
+        <label>Email</label>
+        <input type="email" onChange={(e) => setEmail(e.target.value)} value={email} />
       </div>
       <div>
         <label>Password</label>
