@@ -22,7 +22,20 @@ const fetchUser = (email) => {
   });
 };
 
+const getUserById = (id) => {
+  console.log(id);
+  return new Promise((resolve, reject) => {
+    database.get("SELECT email FROM Users WHERE id = ?", [id], (err, row) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(row);
+    });
+  });
+};
+
 module.exports = {
   database,
   fetchUser,
+  getUserById,
 };

@@ -33,7 +33,7 @@ export const UserDataProvider = ({ children }: Props) => {
         token: result.data.userId
       };
 
-      //setUser(user);
+      setUser(user);
       setIsLoading(false);
     };
 

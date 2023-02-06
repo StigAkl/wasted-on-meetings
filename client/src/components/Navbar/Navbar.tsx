@@ -1,13 +1,22 @@
 import { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserDetailsContext } from "../../state/context/UserDetailsProvider";
 import css from './Navbar.module.css';
 import Hamburger from './../../assets/hamburger.svg';
+import NavbarLink from "./NavbarLink";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
 
-  const { user } = useContext(UserDetailsContext);
+  const { user, setUser } = useContext(UserDetailsContext);
   const [showNavbar, setShowNavbar] = useState(false)
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    setUser(undefined);
+    navigate("/login");
+    setShowNavbar(false);
+  }
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar)
@@ -15,29 +24,16 @@ const Navbar = () => {
 
   const loggedInRoutes = () => {
     return <>
-      <NavLink onClick={() => setShowNavbar(false)}
-        className={({ isActive }) => isActive ? css.active : undefined}
-        to="#Meetings">Meetings</NavLink>
-
-      <NavLink onClick={() => setShowNavbar(false)}
-        className={({ isActive }) => isActive ? css.active : undefined}
-        to="#Statistics">Statistics</NavLink>
-
-      <NavLink onClick={() => setShowNavbar(false)}
-        className={({ isActive }) => isActive ? css.active : undefined}
-        to="#Settings">Settings</NavLink>
+      <NavbarLink to="/" onClick={setShowNavbar}>Home</NavbarLink>
+      <NavbarLink to="/statistics" onClick={setShowNavbar}>Statistics</NavbarLink>
+      <button onClick={(handleSignOut)} className={css.logoutButton}>Log out</button>
     </>
   }
 
   const unAuthRoutes = () => {
     return <>
-      <NavLink onClick={() => setShowNavbar(false)}
-        className={({ isActive }) => isActive ? css.active : undefined}
-        to="/login">Login</NavLink>
-
-      <NavLink onClick={() => setShowNavbar(false)}
-        className={({ isActive }) => isActive ? css.active : undefined}
-        to="/signup">Signup</NavLink>
+      <NavbarLink to="/login" onClick={setShowNavbar}>Login</NavbarLink>
+      <NavbarLink to="/signup" onClick={setShowNavbar}>Signup</NavbarLink>
     </>
   }
 

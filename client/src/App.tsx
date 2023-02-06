@@ -1,44 +1,54 @@
 import { useContext, useEffect } from "react"
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { useNavigate, Route, Routes } from "react-router-dom";
 import { UserDetailsContext } from "./state/context/UserDetailsProvider";
 import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Home from "./pages/Home/Home";
-import { IUserDetails } from "./state/types/State";
+import Meetings from "./pages/Meetings";
+import Statistics from "./pages/Statistics";
+import Settings from "./pages/Settings";
 
 const App = () => {
-
   const { user } = useContext(UserDetailsContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [])
 
   return (
     <>
       <Navbar />
-      <Routes>
-        {unauthenticatedRoutes(user)}
-        {user && loggedInRoutes(user)}
-      </Routes>
+      <div className="container">
+        <Routes>
+          {unauthenticatedRoutes()}
+          {user && loggedInRoutes()}
+        </Routes>
+      </div>
     </>
   )
 }
 
-const unauthenticatedRoutes = (user: IUserDetails) => {
+const unauthenticatedRoutes = () => {
   return (
     <>
-      <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-      <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
     </>
   )
 }
 
-const loggedInRoutes = (user: IUserDetails) => {
+const loggedInRoutes = () => {
   return (
     <>
-      <Route path="#Meetings" />
-      <Route path="#Statistics" />
-      <Route path="#Settings" />
-      <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/Meetings" element={<Meetings />} />
+      <Route path="/Statistics" element={<Statistics />} />
+      <Route path="/Settings" element={<Settings />} />
     </>
   )
 }

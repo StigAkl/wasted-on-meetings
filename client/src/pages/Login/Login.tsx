@@ -1,9 +1,21 @@
-import { FormEvent, useContext, useState } from "react";
-import axios from 'axios';
-import { authUrl } from "../../constants/api";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import css from './Login.module.css';
+import { UserDetailsContext } from "../../state/context/UserDetailsProvider";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
+  const { user, setUser } = useContext(UserDetailsContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      console.log("User, redirecting");
+      setUser(undefined);
+      navigate('/')
+    }
+  }, [])
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,10 +26,16 @@ const Login = () => {
   };
 
   const performLogin = async () => {
-    const response = await axios.post(authUrl, {
-      email,
-      password
+    // const response = await axios.post(authUrl, {
+    //   email,
+    //   password
+    // })
+
+    setUser({
+      email: "kake@kake.com",
+      token: "kake"
     })
+    navigate('/')
   }
 
   return (

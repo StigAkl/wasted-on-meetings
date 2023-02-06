@@ -1,5 +1,6 @@
 const express = require("express");
-const { fetchUser } = require("../data/database");
+const { fetchUser, getUserById } = require("../data/database");
+const jwt = require("jsonwebtoken");
 
 const userRouter = express.Router();
 
@@ -21,8 +22,6 @@ userRouter.get("/:email", async (req, res) => {
 
 userRouter.get("/", async (req, res) => {
   const token = req.headers.authorization;
-
-  console.log(token);
   if (!token) {
     return res.sendResponse({
       success: false,
@@ -31,9 +30,22 @@ userRouter.get("/", async (req, res) => {
     });
   }
 
-  return res.sendResponse({
-    data: "Here is your data!",
-  });
+  try {
+    const data = jwt.verify(token, process.env.accessTokenSecret);
+
+    console.log("Data:", data);
+    const user = await getUserById(data.id);
+
+    return res.sendResponse({
+      data: user,
+    });
+  } catch (error) {
+    return res.sendResponse({
+      success: false,
+      error: "Not authorized",
+      status: 401,
+    });
+  }
 });
 
 module.exports = userRouter;
