@@ -7,7 +7,7 @@ const Signup = () => {
       <input type="text" className={css.formField} />
       <label>Password: </label>
       <input type="password" className={css.formField} />
-      <label>Password: </label>
+      <label>Repeat password: </label>
       <input type="password" className={css.formField} />
 
       <input type="submit" className={css.signupButton} value="Sign up" />
