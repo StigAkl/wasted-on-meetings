@@ -1,6 +1,7 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import axios from 'axios';
-import { authUrl } from "../constants/api";
+import { authUrl } from "../../constants/api";
+import css from './Login.module.css';
 
 const Login = () => {
 
@@ -17,22 +18,20 @@ const Login = () => {
       email,
       password
     })
-
-    console.log(response.data.data);
   }
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className={css.login} onSubmit={onSubmit}>
       <div>
         <label>Email</label>
-        <input type="email" onChange={(e) => setEmail(e.target.value)} value={email} />
+        <input className={css.formField} type="email" onChange={(e) => setEmail(e.target.value)} value={email} />
       </div>
       <div>
         <label>Password</label>
-        <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
+        <input className={css.formField} type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
       </div>
       <div>
-        <input type="submit" value="Login" />
+        <input className={css.button} type="submit" value="Login" />
       </div>
     </form>
   )

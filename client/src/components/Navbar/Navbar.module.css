@@ -1,0 +1,53 @@
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+}
+
+header {
+  background: #fff;
+}
+header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header a {
+  color: #333;
+  text-decoration: none;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+/* navbar */
+nav {
+  display: flex;
+  align-items: center;
+  color: green;
+}
+nav a {
+  margin-left: 15px;
+}
+
+nav button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.active {
+  font-weight: bold;
+  color: var(--primary);
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 10px;
+}
