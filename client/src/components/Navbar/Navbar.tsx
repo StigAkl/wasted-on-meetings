@@ -18,9 +18,11 @@ const Navbar = () => {
       <NavLink onClick={() => setShowNavbar(false)}
         className={({ isActive }) => isActive ? css.active : undefined}
         to="#Meetings">Meetings</NavLink>
+
       <NavLink onClick={() => setShowNavbar(false)}
         className={({ isActive }) => isActive ? css.active : undefined}
         to="#Statistics">Statistics</NavLink>
+
       <NavLink onClick={() => setShowNavbar(false)}
         className={({ isActive }) => isActive ? css.active : undefined}
         to="#Settings">Settings</NavLink>
@@ -32,6 +34,7 @@ const Navbar = () => {
       <NavLink onClick={() => setShowNavbar(false)}
         className={({ isActive }) => isActive ? css.active : undefined}
         to="/login">Login</NavLink>
+
       <NavLink onClick={() => setShowNavbar(false)}
         className={({ isActive }) => isActive ? css.active : undefined}
         to="/signup">Signup</NavLink>
@@ -42,14 +45,14 @@ const Navbar = () => {
     <header>
       <div className={css.container}>
         <Link to="/">
-          <h2>WoM</h2>
+          <h2 className={css.logo}>Wasted On Meetings</h2>
         </Link>
 
         <div className={css.menuIcon} onClick={handleShowNavbar}>
           <img src={Hamburger} style={{ height: 25, width: 25 }} alt="Hamburger icon" />
         </div>
 
-        <nav className={`${css.navElementsMobile} & ${showNavbar && css.activeBar}`}>
+        <nav className={`${css.navElements} & ${showNavbar && css.activeBar}`}>
           {user && loggedInRoutes()}
           {!user && unAuthRoutes()}
         </nav>

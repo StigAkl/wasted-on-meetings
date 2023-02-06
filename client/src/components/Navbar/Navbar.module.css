@@ -48,25 +48,18 @@ nav button {
 }
 
 /* Responsive menu */
-.navElements {
-  width: 50%;
-  display: flex;
-  justify-content: flex-end;
-  border: 1px solid black;
-}
 
-.navElementsMobile {
-  position: absolute;
-  right: 0;
+.navElements {
   top: 60px;
-  background-color: #fef7e5;
-  width: 0;
-  height: calc(100vh - 60px);
-  transition: all 0.3s ease-in;
-  overflow: hidden;
+  background-color: #ffffff;
+  display: flex;
 }
 
 .menuIcon {
+  display: none;
+}
+
+.closeBarLink {
   display: none;
 }
 
@@ -76,11 +69,11 @@ nav button {
     cursor: pointer;
   }
 
-  .navElementsMobile {
+  .navElements {
     position: absolute;
     right: 0;
-    top: 60px;
-    background-color: #fef7e5;
+    top: 95px;
+    background-color: #ffffff;
     width: 0px;
     height: calc(100vh - 60px);
     transition: all 0.3s ease-in;
@@ -89,10 +82,10 @@ nav button {
     flex-direction: column;
   }
 
-  .navElementsMobile a {
-    margin-right: unset;
-    margin-top: 22px;
+  .navElements a:first-child {
+    margin-top: 30px;
   }
+
   .activeBar {
     width: 270px;
   }
