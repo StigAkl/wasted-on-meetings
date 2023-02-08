@@ -29,3 +29,7 @@ form {
   border-radius: 5px;
   width: 50%;
 }
+
+.errorMessage {
+  color: var(--error);
+}
