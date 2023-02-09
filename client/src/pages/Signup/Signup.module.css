@@ -33,3 +33,7 @@ form {
 .errorMessage {
   color: var(--error);
 }
+
+.loading {
+  color: var(--primary);
+}

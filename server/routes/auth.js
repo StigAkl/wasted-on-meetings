@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const authRouter = express.Router();
 const refreshTokenService = require("./../services/refreshTokenService");
 const bcrypt = require("bcrypt");
+const { fetchUser, createUser } = require("../data/database");
 
 authRouter.post("/signin", validateLogin, async (req, res) => {
   const refreshTokenSecret = process.env.refreshTokenSecret;
@@ -29,6 +30,32 @@ authRouter.post("/signin", validateLogin, async (req, res) => {
     data: {
       refreshToken: refreshToken,
       accessToken: accessToken,
+    },
+  });
+});
+
+authRouter.post("/signup", async (req, res) => {
+  const { email, password } = req.body.data;
+
+  const user = await fetchUser(email);
+
+  if (user) {
+    return res.sendResponse({
+      error: "Det eksisterer allerede en konto med denne e-posten.",
+      status: 400,
+    });
+  }
+
+  try {
+    const created = await createUser("test", "test");
+    console.log("Created: ", created);
+  } catch (err) {
+    console.log("Err creating:", err);
+  }
+
+  return res.sendResponse({
+    data: {
+      status: 204,
     },
   });
 });

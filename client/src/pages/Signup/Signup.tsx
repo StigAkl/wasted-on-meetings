@@ -1,6 +1,9 @@
 import css from './Signup.module.css';
 import useHandleSubmit from '../../hooks/useHandleSubmit';
 import { signUpUrl } from '../../constants/api';
+import { useContext } from 'react';
+import { UserDetailsContext } from '../../state/context/UserDetailsProvider';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
 
@@ -9,12 +12,10 @@ const Signup = () => {
     handleInputChange,
     formData,
     success,
-    error,
-    results } = useHandleSubmit(signUpUrl);
+    error } = useHandleSubmit(signUpUrl);
 
-  if (loading) {
-    return <h3>Loading..</h3>
-  }
+
+  const { setUser } = useContext(UserDetailsContext);
 
 
   return (
@@ -37,10 +38,10 @@ const Signup = () => {
         onChange={handleInputChange}
         className={css.formField} />
 
-      <input type="submit" className={css.signupButton} value="Sign up" />
-
+      {!loading && <input type="submit" className={css.signupButton} value="Sign up" />}
+      {loading && <h3 className={css.loading}>Loading..</h3>}
       <p className={css.errorMessage}>{error}</p>
-      {success && <p>Kontoen er opprettet</p>}
+      {success && <p>Kontoen er opprettet! Du kan nå logge inn <Link to="/login">her</Link></p>}
     </form>
   )
 }

@@ -21,6 +21,8 @@ const useHandleSubmit = (url: string) => {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    setSuccess(false);
+    setError("");
     setLoading(true);
     try {
       const axios = getAxiosInstance();
@@ -31,7 +33,6 @@ const useHandleSubmit = (url: string) => {
       setResults(results);
     } catch (error: any) {
       setError(resolveAxiosError(error));
-      console.log(error);
     } finally {
       setLoading(false);
     }

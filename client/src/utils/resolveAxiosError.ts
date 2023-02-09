@@ -9,8 +9,8 @@ export const resolveAxiosError = (error: Error | AxiosError) => {
       case errorCode.NETWORK_ERROR:
         return errorMessage.DEAD_API;
       default:
-        if (error.response?.data?.errorMessage) {
-          return error.response.data.errorMessage;
+        if (error.response?.data?.error) {
+          return error.response.data.error;
         }
         return errorMessage.SIGNUP_ERROR;
     }
