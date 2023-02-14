@@ -2,11 +2,7 @@ import { AxiosResponse } from "axios";
 import { useState, ChangeEvent, FormEvent } from "react";
 import { getAxiosInstance } from "../auth/auth";
 import { resolveAxiosError } from "../utils/resolveAxiosError";
-import {
-  emailValidator,
-  passwordValidator,
-  validateForm,
-} from "../utils/validator";
+import { validateForm } from "../utils/validator";
 
 export interface FormData {
   email: string;
@@ -31,16 +27,20 @@ const useSignupForm = (url: string) => {
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState(false);
   const [results, setResults] = useState<AxiosResponse>();
-  const [formValidation, setFormValidation] = useState<FormValidation>();
+  const [formValidation, setFormValidation] = useState<FormValidation>({
+    pwIsMatching: true,
+    emailError: "",
+    passwordError: "",
+  });
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    const axios = getAxiosInstance();
+    setSuccess(false);
     if (validateForm(formData, setFormValidation)) {
-      setSuccess(false);
       setError("");
       setLoading(true);
       try {
-        const axios = getAxiosInstance();
         const results = await axios.post(url, {
           data: formData,
         });

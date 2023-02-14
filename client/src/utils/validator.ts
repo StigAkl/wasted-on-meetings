@@ -4,15 +4,16 @@ import {
   FormValidation as FormValidationType,
 } from "../hooks/useSignupForm";
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const passwordRegex =
+  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
 interface FormValidation {
   passwordError: string;
   matchingPasswords: boolean;
 }
 
 export const passwordValidator = (p1: string, p2: string): FormValidation => {
-  const passwordRegex =
-    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
-
   let passwordError = "";
   let matchingPasswords = true;
 
@@ -31,8 +32,6 @@ export const passwordValidator = (p1: string, p2: string): FormValidation => {
 };
 
 export const emailValidator = (email: string): boolean => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
   if (!email) return false;
 
   if (!email.match(emailRegex)) return false;
@@ -59,6 +58,8 @@ export const validateForm = (
     passwordError,
     pwIsMatching: matchingPasswords,
   });
+
+  if (emailError || passwordError) return false;
 
   return true;
 };

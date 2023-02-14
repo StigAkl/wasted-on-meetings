@@ -1,8 +1,9 @@
 import { createContext, useState, ReactNode, useEffect, Dispatch, SetStateAction } from "react";
-import { getAxiosInstance } from "../../auth/auth";
+import { getAxiosInstance, getToken } from "../../auth/auth";
+import { fetchUserUrl, refreshUrl } from "../../constants/api";
+import { ACCESS_TOKEN } from "../../constants/constants";
 import { InitialUserDetails, IUserDetails } from "../types/State";
 
-const placeholder = "https://jsonplaceholder.typicode.com/todos/1";
 interface Props {
   children: ReactNode
 }
@@ -22,22 +23,32 @@ export const UserDetailsContext = createContext<UserContextProps>(initialUserCon
 export const UserDataProvider = ({ children }: Props) => {
   const [user, setUser] = useState<IUserDetails | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
   useEffect(() => {
     const fetchUserDetails = async () => {
       const axiosInstance = getAxiosInstance();
-      const result = await axiosInstance.get(placeholder);
+      try {
+        const result = await axiosInstance.get(fetchUserUrl);
+      } catch (err: any) {
+        if (err.response?.status === 401) {
+          try {
+            const results = await axiosInstance.get(refreshUrl)
+            /*
+            TODO: Set new refresh and access token
+            */
 
-      const user: IUserDetails = {
-        email: result.data.title,
-        token: result.data.userId
-      };
-
-      setUser(user);
+          } catch (err: any) {
+            //Both tokens are expired, remove from local storage 
+          }
+        }
+      }
       setIsLoading(false);
     };
 
-    fetchUserDetails();
+    if (getToken(ACCESS_TOKEN)) {
+      fetchUserDetails();
+    } else {
+      setIsLoading(false);
+    }
   }, []);
 
   if (isLoading) {

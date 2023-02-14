@@ -49,7 +49,7 @@ const Signup = () => {
       <input type="password"
         onChange={handleInputChange}
         name="repeatPassword"
-        className={`${css.formField} & ${!formValidation?.pwIsMatching && css.inputError}`} />
+        className={`${css.formField} & ${(!formValidation?.pwIsMatching) && css.inputError}`} />
 
       {renderResultsAndSubmitButton()}
     </form>
