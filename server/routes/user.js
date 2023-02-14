@@ -33,7 +33,6 @@ userRouter.get("/", async (req, res) => {
   try {
     const data = jwt.verify(token, process.env.accessTokenSecret);
 
-    console.log("Data:", data);
     const user = await getUserById(data.id);
 
     return res.sendResponse({

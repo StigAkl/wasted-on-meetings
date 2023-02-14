@@ -6,6 +6,10 @@ const authRouter = express.Router();
 const refreshTokenService = require("./../services/refreshTokenService");
 const bcrypt = require("bcrypt");
 const { fetchUser, createUser } = require("../data/database");
+const {
+  emailValidator,
+  passwordValidator,
+} = require("../shared/utils/validator");
 
 authRouter.post("/signin", validateLogin, async (req, res) => {
   const refreshTokenSecret = process.env.refreshTokenSecret;
@@ -37,6 +41,20 @@ authRouter.post("/signin", validateLogin, async (req, res) => {
 authRouter.post("/signup", async (req, res) => {
   const { email, password } = req.body.data;
 
+  if (!emailValidator(email)) {
+    return res.sendResponse({
+      status: 400,
+      error: "Email error",
+    });
+  }
+
+  if (!passwordValidator(password)) {
+    return res.sendResponse({
+      status: 400,
+      error: "Password error",
+    });
+  }
+
   const user = await fetchUser(email);
 
   if (user) {
@@ -45,18 +63,20 @@ authRouter.post("/signup", async (req, res) => {
       status: 400,
     });
   }
+  const hash = bcrypt.hash(password, 10);
 
   try {
-    const created = await createUser("test", "test");
-    console.log("Created: ", created);
+    await createUser(email, hash);
   } catch (err) {
-    console.log("Err creating:", err);
+    console.error("Error creating user:", err);
+    return res.sendResponse({
+      error: "Error creating user.",
+      status: 500,
+    });
   }
 
   return res.sendResponse({
-    data: {
-      status: 204,
-    },
+    status: 204,
   });
 });
 
