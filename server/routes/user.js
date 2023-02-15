@@ -33,6 +33,15 @@ userRouter.get("/", async (req, res) => {
 
   try {
     const data = jwt.verify(token, process.env.accessTokenSecret);
+
+    if (Date.now() >= data.exp * 1000) {
+      res.sendResponse({
+        success: false,
+        error: "Not authorized",
+        status: 401,
+      });
+    }
+
     const user = await getUserById(data.id);
 
     return res.sendResponse({
