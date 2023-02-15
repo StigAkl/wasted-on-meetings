@@ -31,3 +31,7 @@ form.login {
   cursor: pointer;
   width: 50%;
 }
+
+.errorText {
+  color: var(--error);
+}

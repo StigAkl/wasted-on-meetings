@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode, useEffect, Dispatch, SetStateAction } from "react";
-import { getAxiosInstance, getToken } from "../../auth/auth";
-import { fetchUserUrl, refreshUrl } from "../../constants/api";
+import { getAxiosInstance, getToken, setToken } from "../../utils/token";
+import { fetchUserUrl } from "../../constants/api";
 import { ACCESS_TOKEN } from "../../constants/constants";
 import { InitialUserDetails, IUserDetails } from "../types/State";
 
@@ -10,12 +10,14 @@ interface Props {
 
 interface UserContextProps {
   user: IUserDetails | undefined,
-  setUser: Dispatch<SetStateAction<IUserDetails | undefined>>
+  setUser: Dispatch<SetStateAction<IUserDetails | undefined>>,
+  fetchDetails: () => Promise<void>
 }
 
 const initialUserContextProps: UserContextProps = {
   user: InitialUserDetails,
-  setUser: () => { }
+  setUser: () => { },
+  fetchDetails: async () => { }
 }
 
 export const UserDetailsContext = createContext<UserContextProps>(initialUserContextProps);
@@ -23,29 +25,35 @@ export const UserDetailsContext = createContext<UserContextProps>(initialUserCon
 export const UserDataProvider = ({ children }: Props) => {
   const [user, setUser] = useState<IUserDetails | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  useEffect(() => {
-    const fetchUserDetails = async () => {
-      const axiosInstance = getAxiosInstance();
-      try {
-        const result = await axiosInstance.get(fetchUserUrl);
-      } catch (err: any) {
-        if (err.response?.status === 401) {
-          try {
-            const results = await axiosInstance.get(refreshUrl)
-            /*
-            TODO: Set new refresh and access token
-            */
 
-          } catch (err: any) {
-            //Both tokens are expired, remove from local storage 
-          }
-        }
+  const fetchDetails = async () => {
+    const axiosInstance = getAxiosInstance();
+    try {
+      const result = await axiosInstance.get(fetchUserUrl);
+      if (result.status === 200) {
+        setUser({
+          email: result.data.data.email,
+          token: getToken(ACCESS_TOKEN)!
+        })
       }
-      setIsLoading(false);
-    };
+    } catch (err: any) {
+      try {
+        //Retry if failed
+        const result = await axiosInstance.get(fetchUserUrl);
+        const { email, token } = result.data.data;
+        setUser({
+          email: email,
+          token: token
+        });
 
+      } catch (err: any) { }
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
     if (getToken(ACCESS_TOKEN)) {
-      fetchUserDetails();
+      fetchDetails();
     } else {
       setIsLoading(false);
     }
@@ -56,7 +64,7 @@ export const UserDataProvider = ({ children }: Props) => {
   }
 
   return (
-    <UserDetailsContext.Provider value={{ user, setUser }}>
+    <UserDetailsContext.Provider value={{ user, setUser, fetchDetails }}>
       {children}
     </UserDetailsContext.Provider>);
 };

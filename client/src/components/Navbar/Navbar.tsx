@@ -5,6 +5,7 @@ import css from './Navbar.module.css';
 import Hamburger from './../../assets/hamburger.svg';
 import NavbarLink from "./NavbarLink";
 import { useNavigate } from "react-router-dom";
+import { clearStorage } from "../../utils/token";
 
 const Navbar = () => {
 
@@ -14,6 +15,7 @@ const Navbar = () => {
 
   const handleSignOut = () => {
     setUser(undefined);
+    clearStorage();
     navigate("/login");
     setShowNavbar(false);
   }

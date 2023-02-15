@@ -16,6 +16,7 @@ const App = () => {
 
   useEffect(() => {
     if (!user) {
+      console.log("USER?!", user)
       navigate("/login");
     }
   }, [])

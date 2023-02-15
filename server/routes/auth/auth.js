@@ -1,15 +1,39 @@
 const express = require("express");
-const validateLogin = require("../middleware/validateLogin");
-const roles = require("../shared/constants/roles");
-const jwt = require("jsonwebtoken");
+const validateLogin = require("../../middleware/validateLogin");
 const authRouter = express.Router();
-const refreshTokenService = require("./../services/refreshTokenService");
+const refreshTokenService = require("../../services/refreshTokenService");
 const bcrypt = require("bcrypt");
-const { fetchUser, createUser } = require("../data/database");
+const { fetchUser, createUser } = require("../../data/database");
 const {
   emailValidator,
   passwordValidator,
-} = require("../shared/utils/validator");
+} = require("../../shared/utils/validator");
+const {
+  verifyToken,
+  signToken,
+  generateAccessToken,
+  generateRefreshToken,
+} = require("./authService");
+const jwt = require("jsonwebtoken");
+
+authRouter.post("/refresh", async (req, res) => {
+  const token = req.headers["x-refresh-token"];
+  if (verifyToken(token)) {
+    const id = jwt.decode(token).id;
+    const accessToken = generateAccessToken(id);
+    const refreshToken = generateRefreshToken(id);
+    return res.sendResponse({
+      data: {
+        refreshToken: refreshToken,
+        accessToken: accessToken,
+      },
+    });
+  }
+
+  return res.sendResponse({
+    status: 403,
+  });
+});
 
 authRouter.post("/signin", validateLogin, async (req, res) => {
   const refreshTokenSecret = process.env.refreshTokenSecret;
@@ -63,7 +87,7 @@ authRouter.post("/signup", async (req, res) => {
       status: 400,
     });
   }
-  const hash = bcrypt.hash(password, 10);
+  const hash = await bcrypt.hash(password, 10);
 
   try {
     await createUser(email, hash);
@@ -79,17 +103,6 @@ authRouter.post("/signup", async (req, res) => {
     status: 204,
   });
 });
-
-const signToken = (id, expiresIn, secret) => {
-  return jwt.sign(
-    {
-      role: roles.user,
-      id,
-    },
-    secret,
-    { expiresIn: expiresIn }
-  );
-};
 
 authRouter.get("/bcrypted", async (req, res) => {
   const pw = req.query.password;

@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import { useState, ChangeEvent, FormEvent } from "react";
-import { getAxiosInstance } from "../auth/auth";
+import { getAxiosInstance } from "../utils/token";
 import { resolveAxiosError } from "../utils/resolveAxiosError";
 import { validateForm } from "../utils/validator";
 

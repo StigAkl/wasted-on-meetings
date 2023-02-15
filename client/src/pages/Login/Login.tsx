@@ -2,23 +2,26 @@ import { FormEvent, useContext, useEffect, useState } from "react";
 import css from './Login.module.css';
 import { UserDetailsContext } from "../../state/context/UserDetailsProvider";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { authUrl } from "../../constants/api";
+import { setTokens } from "../../utils/token";
 
 const Login = () => {
 
-  const { user, setUser } = useContext(UserDetailsContext);
+  const { user, setUser, fetchDetails } = useContext(UserDetailsContext);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
-      console.log("User, redirecting");
       setUser(undefined);
       navigate('/')
     }
   }, [])
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('kake@kake.no');
+  const [password, setPassword] = useState('Kake123!');
+  const [error, setError] = useState('');
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -26,15 +29,25 @@ const Login = () => {
   };
 
   const performLogin = async () => {
-    // const response = await axios.post(authUrl, {
-    //   email,
-    //   password
-    // })
+    try {
+      const response = await axios.post(authUrl, {
+        email,
+        password
+      })
 
-    setUser({
-      email: "kake@kake.com",
-      token: "kake"
-    })
+      if (response.status === 200) {
+        setTokens(response.data.data);
+        setUser({
+          email: email,
+          token: response.data.accessToken
+        });
+
+        await fetchDetails();
+      }
+    } catch (err: any) {
+      setError("Invalid credentials");
+    }
+
     navigate('/')
   }
 
@@ -51,6 +64,8 @@ const Login = () => {
       <div>
         <input className={css.button} type="submit" value="Login" />
       </div>
+
+      <p className={css.errorText}>{error}</p>
     </form>
   )
 };

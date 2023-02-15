@@ -16,7 +16,7 @@ app.use(cors());
 app.use(commonResponse);
 
 const userRouter = require("./routes/user");
-const authRouter = require("./routes/auth");
+const authRouter = require("./routes/auth/auth");
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auth", authRouter);
