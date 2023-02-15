@@ -9,7 +9,6 @@ const verifyToken = (token) => {
     jwt.verify(token, process.env.refreshTokenSecret);
     return true;
   } catch (error) {
-    console.log("Error??", error);
     return false;
   }
 };
