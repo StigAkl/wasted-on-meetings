@@ -1,5 +1,5 @@
 const { fetchUser } = require("../data/database");
-const error = require("../shared/errors/errors");
+const { AUTH_ERROR } = require("../shared/constants/errors");
 const bcrypt = require("bcrypt");
 
 const validateLogin = async (req, res, next) => {
@@ -18,7 +18,7 @@ const validateLogin = async (req, res, next) => {
   const compare = await bcrypt.compare(password, user.password);
 
   if (compare) {
-    res.user = user;
+    req.user = user;
     return next();
   }
 
@@ -29,7 +29,7 @@ const invalidCredentialsResponse = (res) => {
   return res.sendResponse({
     status: 400,
     success: false,
-    error: error.invalidCredentials,
+    error: AUTH_ERROR.invalidCredentials,
   });
 };
 
