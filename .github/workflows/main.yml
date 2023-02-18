@@ -9,7 +9,6 @@ on:
 
 jobs:
   Jest:
-    working-directory: server
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -17,3 +16,4 @@ jobs:
         run: |
           npm install 
           npm test
+          working-directory: server
