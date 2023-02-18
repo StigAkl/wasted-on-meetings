@@ -27,7 +27,7 @@ const validateLogin = async (req, res, next) => {
 
 const invalidCredentialsResponse = (res) => {
   return res.sendResponse({
-    status: 400,
+    status: 401,
     success: false,
     error: AUTH_ERROR.invalidCredentials,
   });

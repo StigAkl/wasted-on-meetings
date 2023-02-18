@@ -1,14 +1,7 @@
 const sqlite3 = require("sqlite3").verbose();
 const DBSOURCE = process.env.DBSOURCE;
 
-const database = new sqlite3.Database(DBSOURCE, (err) => {
-  if (err) {
-    console.error(err.message);
-    throw err;
-  } else {
-    console.log("Connected to database");
-  }
-});
+const database = new sqlite3.Database(DBSOURCE);
 
 const fetchUser = (email) => {
   return new Promise((resolve, reject) => {
@@ -46,6 +39,11 @@ const createUser = (email, password) => {
     );
   });
 };
+
+process.on("SIGINT", () => {
+  database.close();
+  console.log("database closed");
+});
 
 module.exports = {
   database,
