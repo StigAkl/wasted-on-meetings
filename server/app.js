@@ -5,7 +5,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const commonResponse = require("./middleware/commonResponse");
-const { fetchUser } = require("./data/UsersRepository");
+const { fetchUser } = require("./data/Repositories/UsersRepository");
 var bodyParser = require("body-parser");
 const app = express();
 
