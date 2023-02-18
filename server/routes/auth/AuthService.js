@@ -10,7 +10,10 @@ const {
   passwordValidator,
 } = require("../../shared/utils/validator");
 const { AUTH_ERROR } = require("../../shared/constants/errors");
-const { fetchUser, createUser } = require("../../data/UsersRepository");
+const {
+  fetchUser,
+  createUser,
+} = require("../../data/Repositories/UsersRepository");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 

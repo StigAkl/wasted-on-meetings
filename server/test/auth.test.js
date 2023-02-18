@@ -1,10 +1,10 @@
 const request = require("supertest");
 const app = require("../app");
 const { AUTH_ERROR } = require("../shared/constants/errors");
-const database = require("../data/UsersRepository");
+const database = require("../data/Repositories/UsersRepository");
 const bcrypt = require("bcrypt");
 
-jest.mock("../data/UsersRepository");
+jest.mock("../data/Repositories/UsersRepository");
 
 let mockCreateUser = jest.spyOn(database, "createUser");
 let mockFetchUser = jest.spyOn(database, "fetchUser");

@@ -1,4 +1,4 @@
-const getConnection = require("./dbconnection");
+const getConnection = require("../dbconnection");
 
 const database = getConnection();
 

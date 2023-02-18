@@ -1,6 +1,6 @@
 const express = require("express");
-const { fetchUser, getUserById } = require("../../data/UsersRepository");
-const jwt = require("jsonwebtoken");
+const { fetchUser } = require("../../data/Repositories/UsersRepository");
+const auth = require("../../middleware/auth");
 
 const userRouter = express.Router();
 
@@ -20,40 +20,10 @@ userRouter.get("/:email", async (req, res) => {
   }
 });
 
-userRouter.get("/", async (req, res) => {
-  const token = req.headers["x-access-token"];
-
-  if (!token) {
-    return res.sendResponse({
-      success: false,
-      error: "Not authenticated",
-      status: 401,
-    });
-  }
-
-  try {
-    const data = jwt.verify(token, process.env.accessTokenSecret);
-
-    if (Date.now() >= data.exp * 1000) {
-      res.sendResponse({
-        success: false,
-        error: "Not authorized",
-        status: 401,
-      });
-    }
-
-    const user = await getUserById(data.id);
-
-    return res.sendResponse({
-      data: user,
-    });
-  } catch (error) {
-    return res.sendResponse({
-      success: false,
-      error: "Not authorized",
-      status: 401,
-    });
-  }
+userRouter.get("/", auth, async (req, res) => {
+  return res.sendResponse({
+    data: res.user,
+  });
 });
 
 module.exports = userRouter;
