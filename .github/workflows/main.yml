@@ -13,7 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install packages
-        working-directory: server
+        working-directory: /server
         run: |
           npm install
           npm test
+      -name: 
