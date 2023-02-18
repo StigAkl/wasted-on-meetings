@@ -45,7 +45,6 @@ const createUser = (email, password) => {
 
 process.on("SIGINT", () => {
   database.close();
-  console.log("database closed");
 });
 
 module.exports = {
