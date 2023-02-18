@@ -15,12 +15,16 @@ const fetchUser = (email) => {
 
 const getUserById = (id) => {
   return new Promise((resolve, reject) => {
-    database.get("SELECT email FROM Users WHERE id = ?", [id], (err, row) => {
-      if (err) {
-        reject(err);
+    database.get(
+      "SELECT id,email FROM Users WHERE id = ?",
+      [id],
+      (err, row) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(row);
       }
-      resolve(row);
-    });
+    );
   });
 };
 

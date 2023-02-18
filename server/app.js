@@ -26,11 +26,9 @@ app.use("/api/v1/meeting", meetingRouter);
 
 app.get("/ping", async (req, res) => {
   var ids = req.query.ids.split(",");
-
   for (let i = 0; i < ids.length; i++) {
     await fetchUser(ids[i]);
   }
-
   return res.status(200).json("pong");
 });
 
