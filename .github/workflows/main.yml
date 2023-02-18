@@ -16,6 +16,5 @@ jobs:
       - name: Run Tests
         run: 
           working-directory: server
-          |
           npm install 
           npm test
