@@ -1,16 +1,18 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const express = require("express");
 const morgan = require("morgan");
-var bodyParser = require("body-parser");
 const cors = require("cors");
-const dotenv = require("dotenv");
 const commonResponse = require("./middleware/commonResponse");
-dotenv.config();
-const { fetchUser } = require("./data/database");
+const { fetchUser } = require("./data/UsersRepository");
+var bodyParser = require("body-parser");
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(morgan("dev"));
+app.enable("trust proxy");
+app.use(morgan("combined"));
 app.use(cors());
 app.use(commonResponse);
 

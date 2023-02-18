@@ -1,5 +1,5 @@
 const express = require("express");
-const { fetchUser, getUserById } = require("../../data/database");
+const { fetchUser, getUserById } = require("../../data/UsersRepository");
 const jwt = require("jsonwebtoken");
 
 const userRouter = express.Router();

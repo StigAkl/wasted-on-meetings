@@ -1,4 +1,5 @@
 const defaultResponse = (req, res, next) => {
+  console.log(req.socket.remoteAddress);
   res.sendResponse = ({
     data = null,
     error = null,

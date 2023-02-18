@@ -1,4 +1,4 @@
-const { fetchUser } = require("../data/database");
+const { fetchUser } = require("../data/UsersRepository");
 const { AUTH_ERROR } = require("../shared/constants/errors");
 const bcrypt = require("bcrypt");
 

@@ -1,7 +1,6 @@
-const sqlite3 = require("sqlite3").verbose();
-const DBSOURCE = process.env.DBSOURCE;
+const getConnection = require("./dbconnection");
 
-const database = new sqlite3.Database(DBSOURCE);
+const database = getConnection();
 
 const fetchUser = (email) => {
   return new Promise((resolve, reject) => {
