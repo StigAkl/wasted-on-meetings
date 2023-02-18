@@ -10,7 +10,6 @@ const auth = async (req, res, next) => {
 
   try {
     const data = jwt.verify(token, process.env.accessTokenSecret);
-
     if (Date.now() >= data.exp * 1000) {
       return sendNotAuthenticatedResponse(res);
     }
@@ -18,7 +17,7 @@ const auth = async (req, res, next) => {
     const user = await getUserById(data.id);
 
     if (!user) {
-      sendNotAuthenticatedResponse(res);
+      return sendNotAuthenticatedResponse(res);
     }
 
     res.user = user;
