@@ -14,8 +14,6 @@ const { fetchUser, createUser } = require("../../data/database");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-//Service implementation
-
 module.exports.signin = (req, res) => {
   const id = req.user.id;
   const accessToken = generateAccessToken(id);
