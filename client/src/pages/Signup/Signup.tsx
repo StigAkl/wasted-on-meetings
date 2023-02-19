@@ -17,13 +17,9 @@ const Signup = () => {
     return (
       <>
         <p className={css.errorMessage}>{formValidation?.passwordError}</p>
-
         {!loading && <input type="submit" className={css.signupButton} value="Sign up" />}
-
         {loading && <h3 className={css.loading}>Loading..</h3>}
-
         <p className={css.errorMessage}>{error}</p>
-
         {success && <p>Kontoen er opprettet! Du kan nå logge inn <Link to="/login">her</Link></p>}
       </>);
   }

@@ -4,7 +4,7 @@ import { UserDetailsContext } from "../../state/context/UserDetailsProvider";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { authUrl } from "../../constants/api";
-import { setTokens } from "../../utils/token";
+import { clearStorage, setTokens } from "../../utils/token";
 
 const Login = () => {
 
@@ -15,7 +15,7 @@ const Login = () => {
   useEffect(() => {
     if (user) {
       setUser(undefined);
-      navigate('/')
+      clearStorage();
     }
   }, [])
 
@@ -43,12 +43,12 @@ const Login = () => {
         });
 
         await fetchDetails();
+
+        navigate('/')
       }
     } catch (err: any) {
-      setError("Invalid credentials");
+      setError("Wrong username / password");
     }
-
-    navigate('/')
   }
 
   return (

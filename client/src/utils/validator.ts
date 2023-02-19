@@ -41,7 +41,7 @@ export const emailValidator = (email: string): boolean => {
 
 export const validateForm = (
   formData: FormData,
-  setFormValidation: Dispatch<SetStateAction<FormValidationType | undefined>>
+  setFormValidation: Dispatch<SetStateAction<FormValidationType>>
 ) => {
   let emailError = "";
   if (!emailValidator(formData.email)) {

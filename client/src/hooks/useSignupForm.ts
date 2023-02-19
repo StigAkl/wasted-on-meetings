@@ -47,6 +47,7 @@ const useSignupForm = (url: string) => {
         setSuccess(true);
         setResults(results);
       } catch (error: any) {
+        console.log("ERRORS!?!?");
         setError(resolveAxiosError(error));
       } finally {
         setLoading(false);
