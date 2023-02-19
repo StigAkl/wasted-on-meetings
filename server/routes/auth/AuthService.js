@@ -32,33 +32,36 @@ module.exports.signin = (req, res) => {
   });
 };
 
-module.exports.signup = async (req, res) => {
+module.exports.signup = (req, res) => {
   const { email, password } = req.body;
 
-  if (!emailValidator(email))
-    return sendErrorResponse(res, AUTH_ERROR.emailError, 400);
+  return res.status(400).send();
+  // if (!emailValidator(email)) {
+  //   return await sendErrorResponse(res, AUTH_ERROR.emailError, 400);
+  // }
 
-  if (!passwordValidator(password))
-    return sendErrorResponse(res, AUTH_ERROR.passwordError, 400);
+  // if (!passwordValidator(password)) {
+  //   return await sendErrorResponse(res, AUTH_ERROR.passwordError, 400);
+  // }
 
-  const user = await fetchUser(email);
+  // const user = await fetchUser(email);
 
-  if (user) {
-    return sendErrorResponse(res, AUTH_ERROR.emailExists, 400);
-  }
+  // if (user) {
+  //   return await sendErrorResponse(res, AUTH_ERROR.emailExists, 400);
+  // }
 
-  const hash = await bcrypt.hash(password, 10);
+  // const hash = await bcrypt.hash(password, 10);
 
-  try {
-    await createUser(email, hash);
-  } catch (err) {
-    console.error(AUTH_ERROR.creatingUserError, err);
-    return sendErrorResponse(res, AUTH_ERROR.creatingUserError, 500);
-  }
+  // try {
+  //   await createUser(email, hash);
+  // } catch (err) {
+  //   console.error(AUTH_ERROR.creatingUserError, err);
+  //   return await sendErrorResponse(res, AUTH_ERROR.creatingUserError, 500);
+  // }
 
-  return res.sendResponse({
-    status: 204,
-  });
+  // return await res.sendResponse({
+  //   status: 204,
+  // });
 };
 
 module.exports.refresh = async (req, res) => {

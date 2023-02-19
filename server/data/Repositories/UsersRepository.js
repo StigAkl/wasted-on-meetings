@@ -44,6 +44,7 @@ const createUser = (email, password) => {
 };
 
 process.on("SIGINT", () => {
+  console.log("CLOSE!!!!");
   database.close();
 });
 
