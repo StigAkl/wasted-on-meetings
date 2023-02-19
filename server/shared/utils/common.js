@@ -1,5 +1,5 @@
-const sendErrorResponse = (res, errorMessage, status = 500) => {
-  return res.sendResponse({
+const sendErrorResponse = async (res, errorMessage, status = 500) => {
+  return await res.sendResponse({
     status: status,
     error: errorMessage,
     success: false,

@@ -22,7 +22,24 @@ const getAllMeetings = () => {
   });
 };
 
+const createMeeting = (owner, startTime, endTime, participants) => {
+  return new Promise((resolve, reject) => {
+    database.run(
+      "INSERT INTO Meetings (owner, startTime, endTime, participants)" +
+        "VALUES (?,?,?,?)",
+      [owner, startTime, endTime, participants],
+      (err) => {
+        if (err) {
+          reject(err);
+        }
+        resolve();
+      }
+    );
+  });
+};
+
 module.exports = {
   getMeetings,
   getAllMeetings,
+  createMeeting,
 };
