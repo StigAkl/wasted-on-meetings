@@ -1,42 +1,37 @@
-:root {
-  --primary: #1aac83;
-  --error: #e7195a;
-}
-
 form {
   max-width: 400px;
   margin: 100px auto;
-  background: #fff;
+  background: var(--color-form-background);
   padding: 20px;
   border-radius: 4px;
-  color: #333;
+  color: var(--color-text);
 }
 
 .formField {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
   margin-top: 10px;
 }
 
 .signupButton {
-  background-color: var(--primary);
+  background-color: var(--primary-color);
   border: 0;
   padding: 10px;
-  color: #fff;
+  color: var(--text-color-white);
   border-radius: 5px;
   width: 50%;
 }
 
 .errorMessage {
-  color: var(--error);
+  color: var(--color-error);
 }
 
 .inputError {
-  border: 1px solid var(--error);
+  border: 1px solid var(--color-error);
 }
 
 .loading {
-  color: var(--primary);
+  color: var(--primary-color);
 }

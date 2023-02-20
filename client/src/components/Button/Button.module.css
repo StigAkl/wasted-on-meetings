@@ -1,0 +1,23 @@
+@import "../../colors.module.css";
+
+.button {
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.primaryButton {
+  background-color: var(--primary-color);
+  color: var(--text-color-white);
+  border: none;
+  padding: 16px 16px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.secondaryButton {
+  background-color: var(--secondary-color);
+  color: var(--text-color-var);
+  border: 2px solid var(--primary-color);
+  padding: 8px 16px;
+  border-radius: 4px;
+}

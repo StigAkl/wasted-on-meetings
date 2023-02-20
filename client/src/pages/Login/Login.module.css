@@ -1,15 +1,10 @@
-:root {
-  --primary: #1aac83;
-  --error: #e7195a;
-}
-
 form.login {
   max-width: 400px;
   margin: 100px auto;
   padding: 20px;
-  background: #fff;
+  background: var(--color-form-background);
   border-radius: 4px;
-  color: #333;
+  color: var(--color-text);
 }
 
 .formField {
@@ -17,14 +12,14 @@ form.login {
   margin-top: 10px;
   margin-bottom: 20px;
   width: 100%;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
 }
 
 .button {
-  background: var(--primary);
+  background: var(--primary-color);
   border: 0;
-  color: #fff;
+  color: var(--text-color-white);
   padding: 10px;
   font-family: "Poppins";
   border-radius: 4px;
@@ -33,5 +28,5 @@ form.login {
 }
 
 .errorText {
-  color: var(--error);
+  color: var(--color-error);
 }

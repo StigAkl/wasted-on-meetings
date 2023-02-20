@@ -1,11 +1,9 @@
-:root {
-  --primary: #1aac83;
-  --error: #e7195a;
-}
+@import "../../colors.module.css";
 
 header {
-  background: #fff;
+  background: var(--color-header);
 }
+
 header .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -16,7 +14,7 @@ header .container {
 }
 
 header a {
-  color: var(--primary);
+  color: var(--primary-color);
   text-decoration: none;
 }
 
@@ -30,9 +28,9 @@ nav a {
 }
 
 nav button {
-  background: #fff;
-  color: var(--primary);
-  border: 2px solid var(--primary);
+  background: var(--color-header);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
   border-radius: 4px;
   font-family: "Poppins";
   cursor: pointer;
@@ -44,14 +42,14 @@ nav button.logoutButton {
 }
 
 nav button.logoutButton:hover {
-  border: 2px solid var(--error);
-  color: var(--error);
+  border: 2px solid var(--color-error);
+  color: var(--color-error);
 }
 
 .active {
   font-weight: bold;
-  color: var(--primary);
-  background-color: #f2f2f2;
+  color: var(--primary-color);
+  background-color: var(--color-active-nav-background);
   border-radius: 5px;
   padding: 10px;
 }
@@ -60,8 +58,8 @@ nav button.logoutButton:hover {
 
 .navElements {
   top: 60px;
-  background-color: #ffffff;
   display: flex;
+  background-color: var(--nav-background-color);
 }
 
 .menuIcon {
@@ -82,7 +80,6 @@ nav button.logoutButton:hover {
     position: absolute;
     right: 0;
     top: 95px;
-    background-color: #ffffff;
     width: 0px;
     height: calc(100vh - 60px);
     transition: all 0.3s ease-in;
