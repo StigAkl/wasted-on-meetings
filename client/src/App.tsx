@@ -9,6 +9,7 @@ import Home from "./pages/Home/Home";
 import Meetings from "./pages/Meetings";
 import Statistics from "./pages/Statistics";
 import Settings from "./pages/Settings";
+import Create from "./pages/Create/Create";
 
 const App = () => {
   const { user } = useContext(UserDetailsContext);
@@ -48,6 +49,7 @@ const loggedInRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/Meetings" element={<Meetings />} />
       <Route path="/Statistics" element={<Statistics />} />
+      <Route path="/Create" element={<Create />} />
       <Route path="/Settings" element={<Settings />} />
     </>
   )

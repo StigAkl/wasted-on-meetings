@@ -24,7 +24,7 @@ const Signup = () => {
       </>);
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={css.signupForm} onSubmit={handleSubmit}>
       <label>Email: </label>
       <input type="email"
         value={formData.email}

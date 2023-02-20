@@ -5,12 +5,16 @@
   font-size: 1em;
 }
 
+.button:hover {
+  box-shadow: 0px 2px 5px 0px #42a3e9;
+}
+
 .primaryButton {
   background-color: var(--primary-color);
   color: var(--text-color-white);
   border: none;
   padding: 16px 16px;
-  border-radius: 10px;
+  border-radius: 24px;
   font-weight: bold;
 }
 
@@ -20,4 +24,19 @@
   border: 2px solid var(--primary-color);
   padding: 8px 16px;
   border-radius: 4px;
+}
+
+.small {
+  padding: 12px 14px;
+  font-size: 0.8em;
+}
+
+.medium {
+  padding: 16px 28px;
+  font-size: 0.8em;
+}
+
+.large {
+  padding: 18px 50px;
+  font-size: 1em;
 }

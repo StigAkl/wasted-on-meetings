@@ -1,0 +1,62 @@
+.createForm {
+  color: var(--color-text);
+  font-weight: 400;
+  width: auto;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: var(--color-form-background);
+  height: 330px;
+}
+
+.label {
+  width: 150px;
+  display: inline-block;
+  font-size: 1.2em;
+}
+
+.input {
+  width: 250px;
+  padding: 10px;
+  text-align: center;
+  color: var(--primary-color);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 1.2em;
+}
+
+.formGroup {
+  margin-bottom: 10px;
+}
+
+.createButton {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.content {
+  margin: 20px;
+}
+
+.title {
+  font-size: 1.2em;
+}
+
+@media (max-width: 768px) {
+  .createForm {
+    height: 5100vh;
+    text-align: center;
+    width: 100%;
+  }
+
+  .label {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+
+  .input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

@@ -3,5 +3,11 @@
   padding: 20px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   height: auto;
+  text-align: center;
+}
+
+.buttonSpacing {
+  margin-top: 24px;
 }

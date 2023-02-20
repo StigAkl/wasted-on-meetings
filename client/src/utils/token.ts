@@ -35,7 +35,6 @@ export const getAxiosInstance = () => {
 
   instance.interceptors.request.use(
     (config) => {
-      console.log("using?!");
       const token = getToken(ACCESS_TOKEN);
       if (token) {
         config.headers["x-access-token"] = token;
@@ -43,7 +42,6 @@ export const getAxiosInstance = () => {
       return config;
     },
     (error) => {
-      console.log("REJECTING?");
       return Promise.reject(error);
     }
   );
@@ -63,7 +61,6 @@ export const getAxiosInstance = () => {
             setToken(ACCESS_TOKEN, accessToken);
             setToken(RFT, refreshToken);
           } catch (refreshError: any) {
-            console.log("REJECTING?!?");
             //Invalid tokens, clearing all tokens
             clearStorage();
             return Promise.reject(refreshError);

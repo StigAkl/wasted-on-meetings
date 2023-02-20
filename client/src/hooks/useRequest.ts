@@ -74,7 +74,7 @@ const useRequest = <T>(apiUrl: string) => {
     };
   }, [apiUrl]);
 
-  return [data, error, loading];
+  return { data, error, loading };
 };
 
 export default useRequest;
