@@ -1,32 +1,38 @@
-.login {
+.loginForm {
   max-width: 400px;
   margin: 100px auto;
-  padding: 20px;
   background: var(--color-form-background);
+  padding: 20px;
   border-radius: 4px;
   color: var(--color-text);
+  box-shadow: var(--box-shadow);
 }
 
 .formField {
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 20px;
   width: 100%;
+  padding: 10px;
   border: 1px solid var(--color-border);
   border-radius: 4px;
+  margin-top: 10px;
 }
 
-.button {
-  background: var(--primary-color);
+.loginButton {
+  background-color: var(--primary-color);
   border: 0;
-  color: var(--text-color-white);
   padding: 10px;
-  font-family: "Poppins";
-  border-radius: 4px;
-  cursor: pointer;
+  color: var(--text-color-white);
+  border-radius: 5px;
   width: 50%;
 }
 
-.errorText {
+.errorMessage {
   color: var(--color-error);
+}
+
+.inputError {
+  border: 1px solid var(--color-error);
+}
+
+.loading {
+  color: var(--primary-color);
 }

@@ -52,20 +52,15 @@ const Login = () => {
   }
 
   return (
-    <form className={css.login} onSubmit={onSubmit}>
-      <div>
-        <label>Email</label>
-        <input className={css.formField} type="email" onChange={(e) => setEmail(e.target.value)} value={email} />
-      </div>
-      <div>
-        <label>Password</label>
-        <input className={css.formField} type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
-      </div>
-      <div>
-        <input className={css.button} type="submit" value="Login" />
-      </div>
-
+    <form className={css.loginForm} onSubmit={onSubmit}>
+      <label>Email</label>
+      <input className={css.formField} type="email"
+        onChange={(e) => setEmail(e.target.value)} value={email} />
+      <label>Password</label>
+      <input className={css.formField} type="password"
+        onChange={(e) => setPassword(e.target.value)} value={password} />
       <p className={css.errorText}>{error}</p>
+      <input type="submit" className={css.loginButton} value="Login" />
     </form>
   )
 };

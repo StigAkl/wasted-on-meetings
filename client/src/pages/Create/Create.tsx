@@ -35,6 +35,7 @@ const Create = () => {
 
   return (
     <Container>
+      <h2 className={styles.title}>Meeting details</h2>
       <form className={styles.createForm} onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
           <label className={styles.label}>Start time:</label>

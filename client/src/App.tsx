@@ -10,6 +10,7 @@ import Meetings from "./pages/Meetings";
 import Statistics from "./pages/Statistics";
 import Settings from "./pages/Settings";
 import Create from "./pages/Create/Create";
+import './variables.module.css';
 
 const App = () => {
   const { user } = useContext(UserDetailsContext);

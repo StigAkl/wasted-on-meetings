@@ -1,8 +1,9 @@
 .createForm {
   color: var(--color-text);
   font-weight: 400;
-  width: auto;
   padding: 30px;
+  padding-top: 0px;
+  margin-top: 10px;
   border-radius: 10px;
   background-color: var(--color-form-background);
   height: 330px;
@@ -39,7 +40,9 @@
 }
 
 .title {
-  font-size: 1.2em;
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--primary-color);
 }
 
 @media (max-width: 768px) {

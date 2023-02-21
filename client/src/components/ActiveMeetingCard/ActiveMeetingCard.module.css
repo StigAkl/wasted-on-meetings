@@ -1,0 +1,55 @@
+.card {
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 50%;
+  min-width: 340px;
+  margin-bottom: 4rem;
+}
+
+.timeWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: wrap-reverse;
+  justify-content: space-between;
+}
+
+.participants,
+.cost {
+  font-weight: bold;
+}
+
+.progressBar {
+  font-size: 12px;
+  color: white;
+  height: 16px;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  background-color: #1a73e8;
+}
+
+.cardTitle {
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--primary-color);
+}
+
+.percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 14px;
+  padding: 3px;
+}
