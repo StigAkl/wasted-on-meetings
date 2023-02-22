@@ -10,18 +10,24 @@ const mock: Meeting = {
   hourlyRate: 300
 }
 
-const ActiveMeetingCard = () => {
+interface Props {
+  meeting: Meeting;
+}
 
-  const durationInMinutes = (mock.endTime.getTime() - mock.startTime.getTime()) / 1000 / 60;
-  const totalCost = (durationInMinutes / 60) * mock.hourlyRate;
-  const remainingTimeInMinutes = (mock.endTime.getTime() - new Date().getTime()) / 1000 / 60;
+const ActiveMeetingCard = ({ meeting }: Props) => {
+  console.log("end time:", new Date(meeting.endTime));
+  console.log("gettime:", meeting.endTime.getTime());
+
+  const durationInMinutes = (meeting.endTime.getTime() - meeting.startTime.getTime()) / 1000 / 60;
+  const totalCost = (durationInMinutes / 60) * meeting.hourlyRate;
+  const remainingTimeInMinutes = (meeting.endTime.getTime() - new Date().getTime()) / 1000 / 60;
   const progress = (1 - remainingTimeInMinutes / durationInMinutes) * 100;
 
   return (
     <article className={styles.card}>
       <span className={styles.cardTitle}>Current Meeting</span>
       <div className={styles.participants}>
-        Participants: {mock.participants}
+        Participants: {meeting.participants}
       </div>
       <div className={styles.cost}>Total cost: ${totalCost.toFixed(2)}</div>
       <div className={styles.progressBar}>
@@ -30,8 +36,8 @@ const ActiveMeetingCard = () => {
         </div>
       </div>
       <div className={styles.timeWrapper}>
-        <span>{mock.startTime.toLocaleTimeString().slice(0, 5)}</span>
-        <span>{mock.endTime.toLocaleTimeString().slice(0, 5)}</span>
+        <span>{meeting.startTime.toLocaleTimeString().slice(0, 5)}</span>
+        <span>{meeting.endTime.toLocaleTimeString().slice(0, 5)}</span>
       </div>
     </article>
   );

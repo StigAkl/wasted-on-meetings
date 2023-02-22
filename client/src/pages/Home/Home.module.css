@@ -1,17 +1,27 @@
 .container {
-  margin-top: 20%;
-  padding: 20px;
+  margin-top: 20px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  height: auto;
+  justify-content: center;
   align-items: center;
   text-align: center;
   width: 100%;
 }
 
+.emptyStateContainer {
+  margin-top: 50%;
+}
+
+.activeMeetingsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .buttonSpacing {
   margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 .description {
@@ -24,4 +34,10 @@
 .bold {
   font-weight: bold;
   color: var(--primary-color);
+}
+
+@media (max-width: 990px) {
+  .activeMeetingsWrapper {
+    flex-direction: column;
+  }
 }
