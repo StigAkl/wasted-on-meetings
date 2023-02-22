@@ -15,8 +15,6 @@ interface Props {
 }
 
 const ActiveMeetingCard = ({ meeting }: Props) => {
-  console.log("end time:", new Date(meeting.endTime));
-  console.log("gettime:", meeting.endTime.getTime());
 
   const durationInMinutes = (meeting.endTime.getTime() - meeting.startTime.getTime()) / 1000 / 60;
   const totalCost = (durationInMinutes / 60) * meeting.hourlyRate;

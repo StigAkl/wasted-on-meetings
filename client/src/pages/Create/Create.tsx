@@ -3,6 +3,9 @@ import Button from "../../components/Button/Button";
 import Container from "../../components/Container/Container";
 import styles from './Create.module.css';
 import { getRoundedTime, getRounderTimeOneHourLater } from "../../utils/helpers";
+import { createMeetingUrl } from "../../constants/api";
+import { getToken } from "../../utils/token";
+import { ACCESS_TOKEN } from "../../constants/constants";
 
 interface FormData {
   startTime: Date;
@@ -20,13 +23,36 @@ const initialFormState: FormData = {
 
 const Create = () => {
   const [form, setForm] = useState<FormData>(initialFormState)
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setLoading(true);
     form.startTime.setSeconds(0, 0);
     form.endTime.setSeconds(0, 0);
-    console.log("Submitting form", form)
+
+    try {
+      const results = await fetch(createMeetingUrl, {
+        method: 'POST',
+        headers: {
+          'x-access-token': getToken(ACCESS_TOKEN)
+        },
+        body: JSON.stringify(form)
+      })
+
+      if (results.status >= 400) {
+        throw Error("Error creating meeting");
+      }
+      setSuccess(true);
+    } catch (error) {
+      if (error) {
+        setError(true);
+      }
+    } finally {
+      setLoading(false);
+    }
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -69,7 +95,7 @@ const Create = () => {
         </div>
 
         <div className={styles.createButton}>
-          <Button variant="primary" size="l">Create</Button>
+          {loading ? "Loading.. " : (<Button variant="primary" size="l">Create</Button>)}
         </div>
       </form>
     </Container>

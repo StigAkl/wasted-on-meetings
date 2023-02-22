@@ -33,7 +33,7 @@ const Home = () => {
     m.endTime >= new Date());
 
   const activeMeetings = active?.map(m => {
-    return <ActiveMeetingCard meeting={m} />
+    return <ActiveMeetingCard key={m.id} meeting={m} />
   });
 
   const emptyStateContainer = activeMeetings?.length === 0 ?

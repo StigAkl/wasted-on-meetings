@@ -3,3 +3,4 @@ export const authUrl = `${API_BASE_URL}/api/v1/auth/signin`;
 export const refreshUrl = `${API_BASE_URL}/api/v1/auth/refresh`;
 export const signUpUrl = `${API_BASE_URL}/api/v1/auth/signup`;
 export const fetchUserUrl = `${API_BASE_URL}/api/v1/user`;
+export const createMeetingUrl = `${API_BASE_URL}/api/v1/meeting/create`;
