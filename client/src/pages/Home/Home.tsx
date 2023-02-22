@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { Meeting } from '../../types';
 import ActiveMeetingCard from '../../components/ActiveMeetingCard/ActiveMeetingCard';
 import Title from '../../components/Title/Title';
+import { useEffect } from 'react';
+import { fetchMeetings } from '../../constants/api';
 
 interface Meetings {
   meetings: Meeting[]
@@ -12,8 +14,13 @@ interface Meetings {
 
 const Home = () => {
 
-  const { data, error, loading } = useRequest<Meetings>("http://localhost:5000/api/v1/meeting");
+  const { data, error, loading, performRequest } = useRequest<Meetings>(fetchMeetings);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    performRequest();
+  }, []);
+
 
   const handleOnclick = () => {
     navigate("/create")
@@ -36,13 +43,12 @@ const Home = () => {
     return <ActiveMeetingCard key={m.id} meeting={m} />
   });
 
-  const emptyStateContainer = activeMeetings?.length === 0 ?
+  const emptyStateContainer = (activeMeetings === undefined || activeMeetings.length === 0) ?
     styles.emptyStateContainer :
-    undefined;
+    "";
 
 
   if (loading) return <h3>Loading..</h3>
-  /* TODO: Merge class names in Button component (Ask chatgpt how :-)) */
   return (
     <section className={`${styles.container} ${emptyStateContainer}`}>
       {!active?.length && (

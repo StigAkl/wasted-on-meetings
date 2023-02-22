@@ -5,7 +5,13 @@ const {
 
 const createMeetings = async (owner, startTime, endTime, participants, res) => {
   try {
-    await createMeeting(owner, startTime, endTime, participants);
+    console.log(startTime);
+    await createMeeting(
+      owner,
+      startTime.slice(0, -1),
+      endTime.slice(0, -1),
+      participants
+    );
   } catch (err) {
     res.status(500).json({
       error: MEETING_ERROR.createMeetingInternalError,

@@ -10,7 +10,8 @@ var bodyParser = require("body-parser");
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded());
+//app.use(bodyParser.urlencoded({ extended: true }));
 app.enable("trust proxy");
 app.use(morgan("combined"));
 app.use(cors());
