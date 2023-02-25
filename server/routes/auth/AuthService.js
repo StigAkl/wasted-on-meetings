@@ -45,7 +45,7 @@ module.exports.signup = async (req, res) => {
 
   const user = await fetchUser(email);
 
-  if (user) {
+  if (user.length) {
     return await sendErrorResponse(res, AUTH_ERROR.emailExists, 400);
   }
 

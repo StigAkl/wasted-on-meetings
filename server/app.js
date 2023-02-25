@@ -1,11 +1,9 @@
 const dotenv = require("dotenv");
-dotenv.config();
-
+dotenv.config({ path: `./.env.${process.env.NODE_ENV}` });
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const commonResponse = require("./middleware/commonResponse");
-const { fetchUser } = require("./data/Repositories/UsersRepository");
 var bodyParser = require("body-parser");
 const app = express();
 
@@ -24,13 +22,5 @@ const meetingRouter = require("./routes/Meeting/MeetingController");
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/meeting", meetingRouter);
-
-app.get("/ping", async (req, res) => {
-  var ids = req.query.ids.split(",");
-  for (let i = 0; i < ids.length; i++) {
-    await fetchUser(ids[i]);
-  }
-  return res.status(200).json("pong");
-});
 
 module.exports = app;

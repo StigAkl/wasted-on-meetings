@@ -11,14 +11,14 @@ const validateLogin = async (req, res, next) => {
 
   const user = await fetchUser(email);
 
-  if (!user) {
+  if (!user.length) {
     return invalidCredentialsResponse(res);
   }
 
-  const compare = await bcrypt.compare(password, user.password);
+  const compare = await bcrypt.compare(password, user[0].password);
 
   if (compare) {
-    req.user = user;
+    req.user = user[0];
     return next();
   }
 

@@ -4,7 +4,7 @@ const database = getConnection();
 
 const fetchUser = (email) => {
   return new Promise((resolve, reject) => {
-    database.get("SELECT * FROM Users WHERE email = ?", [email], (err, row) => {
+    database.query("SELECT * FROM Users where email=?", [email], (err, row) => {
       if (err) {
         reject(err);
       }
@@ -15,7 +15,7 @@ const fetchUser = (email) => {
 
 const getUserById = (id) => {
   return new Promise((resolve, reject) => {
-    database.get(
+    database.query(
       "SELECT id,email FROM Users WHERE id = ?",
       [id],
       (err, row) => {
@@ -30,7 +30,7 @@ const getUserById = (id) => {
 
 const createUser = (email, password) => {
   return new Promise((resolve, reject) => {
-    database.run(
+    database.query(
       "INSERT INTO Users(email, password) VALUES(?,?)",
       [email, password],
       (err) => {
@@ -48,7 +48,6 @@ process.on("SIGINT", () => {
 });
 
 module.exports = {
-  database,
   fetchUser,
   getUserById,
   createUser,

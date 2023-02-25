@@ -1,13 +1,21 @@
-const DBSOURCE = process.env.DBSOURCE;
+const mysql = require("mysql");
+
+const connection = {
+  database: process.env.DB_NAME,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+};
 
 let database;
 
 const getConnection = () => {
-  const sqlite3 = require("sqlite3").verbose();
   if (!database) {
-    database = new sqlite3.Database(DBSOURCE);
+    database = new mysql.createConnection(connection);
+    database.connect(function (err) {
+      if (err) throw err;
+    });
   }
-
   return database;
 };
 

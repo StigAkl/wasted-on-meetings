@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "set NODE_ENV=development&& nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,7 +16,7 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
-    "sqlite3": "^5.1.4"
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "jest": "^29.4.3",
