@@ -1,15 +1,18 @@
 const { fetchUser } = require("../data/Repositories/UsersRepository");
 const { AUTH_ERROR } = require("../shared/constants/errors");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const validateLogin = async (req, res, next) => {
+  console.log("VALIDATING LOGIN!");
   const { email, password } = req.body;
 
   if (!email || !password) {
     return invalidCredentialsResponse(res);
   }
 
+  console.log("FETCHING USER BY EMAIL FROM VALIDATE LOGIN:", email);
   const user = await fetchUser(email);
+  console.log("USER FETCHED:", user);
 
   if (!user.length) {
     return invalidCredentialsResponse(res);

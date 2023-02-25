@@ -9,11 +9,14 @@ const connection = {
 
 let database;
 
-const getConnection = () => {
+const getConnection = async () => {
   if (!database) {
     database = new mysql.createConnection(connection);
-    database.connect(function (err) {
-      if (err) throw err;
+    await database.connect(function (err) {
+      if (err) {
+        console.log("Error connecting to database:", err);
+        throw err;
+      }
     });
   }
   return database;

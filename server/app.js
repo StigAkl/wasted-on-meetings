@@ -19,6 +19,10 @@ const userRouter = require("./routes/User/UserController");
 const authRouter = require("./routes/auth/AuthController");
 const meetingRouter = require("./routes/Meeting/MeetingController");
 
+app.get("/hello", (req, res) => {
+  res.send("Hello, lmabda");
+});
+
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/meeting", meetingRouter);

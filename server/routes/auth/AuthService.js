@@ -14,7 +14,7 @@ const {
   fetchUser,
   createUser,
 } = require("../../data/Repositories/UsersRepository");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 module.exports.signin = (req, res) => {
