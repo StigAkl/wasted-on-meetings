@@ -16,11 +16,11 @@ const auth = async (req, res, next) => {
 
     const user = await getUserById(data.id);
 
-    if (!user) {
+    if (!user.length) {
       return sendNotAuthenticatedResponse(res);
     }
 
-    res.user = user;
+    res.user = user[0];
   } catch (error) {
     return sendNotAuthenticatedResponse(res);
   }

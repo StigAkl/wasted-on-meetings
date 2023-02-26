@@ -18,7 +18,6 @@ meetingRouter.get("/", auth, async (req, res) => {
 meetingRouter.post("/create", auth, async (req, res) => {
   const { startTime, endTime, participants } = req.body;
 
-  console.log(req.body);
   if (!startTime || !endTime || !participants) {
     return res.status(400).send({
       error: MEETING_ERROR.createMeetingBadRequest,

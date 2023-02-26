@@ -1,21 +1,26 @@
 const getConnection = require("../dbconnection");
 
-const database = getConnection();
-
-const fetchUser = (email) => {
+const fetchUser = async (email) => {
+  console.log("CONNECTING TO DATABASE");
+  const database = await getConnection();
+  console.log("CONNECTION ESTABLISHED");
   return new Promise((resolve, reject) => {
-    database.get("SELECT * FROM Users WHERE email = ?", [email], (err, row) => {
+    console.log("RUNNING QUERY");
+    database.query("SELECT * FROM Users where email=?", [email], (err, row) => {
       if (err) {
+        console.log("REJECTING");
         reject(err);
       }
+      console.log("RESOLVING");
       resolve(row);
     });
   });
 };
 
-const getUserById = (id) => {
+const getUserById = async (id) => {
+  const database = await getConnection();
   return new Promise((resolve, reject) => {
-    database.get(
+    database.query(
       "SELECT id,email FROM Users WHERE id = ?",
       [id],
       (err, row) => {
@@ -28,9 +33,10 @@ const getUserById = (id) => {
   });
 };
 
-const createUser = (email, password) => {
+const createUser = async (email, password) => {
+  const database = await getConnection();
   return new Promise((resolve, reject) => {
-    database.run(
+    database.query(
       "INSERT INTO Users(email, password) VALUES(?,?)",
       [email, password],
       (err) => {
@@ -48,7 +54,6 @@ process.on("SIGINT", () => {
 });
 
 module.exports = {
-  database,
   fetchUser,
   getUserById,
   createUser,

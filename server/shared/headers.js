@@ -1,0 +1,5 @@
+module.exports = headers = {
+  "Access-Control-Allow-Headers": "Content-Type, x-access-token",
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+};

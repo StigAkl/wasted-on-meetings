@@ -5,7 +5,6 @@ const {
 
 const createMeetings = async (owner, startTime, endTime, participants, res) => {
   try {
-    console.log(startTime);
     await createMeeting(
       owner,
       startTime.slice(0, -1),

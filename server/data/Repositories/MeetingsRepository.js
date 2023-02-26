@@ -1,32 +1,37 @@
 const getConnection = require("../dbconnection");
 
-const database = getConnection();
-
-const getMeetings = (id) => {
+const getMeetings = async (id) => {
+  const database = await getConnection();
   return new Promise((resolve, reject) => {
-    database.all("SELECT * FROM Meetings WHERE owner = ?", [id], (err, row) => {
-      if (err) {
-        reject(err);
+    database.query(
+      "SELECT * FROM Meetings WHERE owner = ?",
+      [id],
+      (err, row) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(row);
       }
-      resolve(row);
-    });
+    );
   });
 };
 
-const getAllMeetings = () => {
+const getAllMeetings = async () => {
+  const database = await getConnection();
   return new Promise((resolve, reject) => {
-    database.get("SELECT * FROM Meetings", (err, row) => {
+    database.query("SELECT * FROM Meetings", (err, row) => {
       if (err) reject(err);
       resolve(row);
     });
   });
 };
 
-const createMeeting = (owner, startTime, endTime, participants) => {
+const createMeeting = async (owner, startTime, endTime, participants) => {
+  const database = await getConnection();
   return new Promise((resolve, reject) => {
-    database.run(
-      "INSERT INTO Meetings (owner, startTime, endTime, participants)" +
-        "VALUES (?,?,?,?)",
+    database.query(
+      "INSERT INTO Meetings(owner, startTime, endTime, participants, hourlyRate)" +
+        "VALUES (?,?,?,?, 300)",
       [owner, startTime, endTime, participants],
       (err) => {
         if (err) {
