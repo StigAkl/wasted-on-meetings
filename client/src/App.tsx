@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate, Route, Routes } from "react-router-dom";
 import { UserDetailsContext } from "./state/context/UserDetailsProvider";
 import Navbar from "./components/Navbar/Navbar";
@@ -15,6 +15,12 @@ import './variables.module.css';
 const App = () => {
   const { user } = useContext(UserDetailsContext);
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+
+  const handleMenuClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+  }
 
   useEffect(() => {
     if (!user) {
@@ -24,7 +30,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar isMenuOpen={isMenuOpen} handleMenuClick={handleMenuClick} />
       <div className="container">
         <Routes>
           {unauthenticatedRoutes()}
