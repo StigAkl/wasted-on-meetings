@@ -2,7 +2,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: `./.env.${process.env.NODE_ENV}` });
 const express = require("express");
 const morgan = require("morgan");
-const cors = require("cors");
+const cors = require("./middleware/cors");
 const commonResponse = require("./middleware/commonResponse");
 var bodyParser = require("body-parser");
 const app = express();
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded());
 //app.use(bodyParser.urlencoded({ extended: true }));
 app.enable("trust proxy");
 app.use(morgan("combined"));
-app.use(cors());
+app.use(cors);
 app.use(commonResponse);
 
 const userRouter = require("./routes/User/UserController");

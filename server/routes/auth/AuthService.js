@@ -16,8 +16,10 @@ const {
 } = require("../../data/Repositories/UsersRepository");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const headers = require("../../shared/headers");
 
 module.exports.signin = (req, res) => {
+  res.set(headers);
   const id = req.user.id;
   const accessToken = generateAccessToken(id);
   const refreshToken = generateRefreshToken(id);
@@ -33,6 +35,7 @@ module.exports.signin = (req, res) => {
 };
 
 module.exports.signup = async (req, res) => {
+  res.set(headers);
   const { email, password } = req.body;
 
   if (!emailValidator(email)) {
@@ -64,6 +67,7 @@ module.exports.signup = async (req, res) => {
 };
 
 module.exports.refresh = async (req, res) => {
+  res.set(headers);
   const token = req.headers["x-refresh-token"];
   if (verifyToken(token)) {
     const id = jwt.decode(token).id;

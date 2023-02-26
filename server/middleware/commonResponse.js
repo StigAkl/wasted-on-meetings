@@ -1,3 +1,5 @@
+const headers = require("../shared/headers");
+
 const defaultResponse = (req, res, next) => {
   res.sendResponse = ({
     data = null,
@@ -5,6 +7,7 @@ const defaultResponse = (req, res, next) => {
     status = 200,
     success = true,
   }) => {
+    res.set(headers);
     if (error) {
       res.status(status).send({
         success: false,
