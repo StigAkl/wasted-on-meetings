@@ -10,24 +10,17 @@ const passwordRegex =
 
 interface FormValidation {
   passwordError: string;
-  matchingPasswords: boolean;
 }
 
-export const passwordValidator = (p1: string, p2: string): FormValidation => {
+export const passwordValidator = (p1: string): FormValidation => {
   let passwordError = "";
-  let matchingPasswords = true;
 
   if (!p1 || !p1.match(passwordRegex)) {
     passwordError = "Dette var dårlig passordvalg gitt. ";
   }
 
-  if (p1 !== p2) {
-    matchingPasswords = false;
-  }
-
   return {
     passwordError,
-    matchingPasswords,
   };
 };
 
@@ -48,15 +41,11 @@ export const validateForm = (
     emailError = "Du vet da hvordan en e-post ser ut?!";
   }
 
-  const { passwordError, matchingPasswords } = passwordValidator(
-    formData.password,
-    formData.repeatPassword
-  );
+  const { passwordError } = passwordValidator(formData.password);
 
   setFormValidation({
     emailError,
     passwordError,
-    pwIsMatching: matchingPasswords,
   });
 
   if (emailError || passwordError) return false;

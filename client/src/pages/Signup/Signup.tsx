@@ -17,7 +17,12 @@ const Signup = () => {
     return (
       <>
         <p className={css.errorMessage}>{formValidation?.passwordError}</p>
-        {!loading && <input type="submit" className={css.signupButton} value="Sign up" />}
+        {!loading && (
+          <div className={css.buttonGroup}>
+            <input type="submit" className={css.signupButton} value="Sign up" />
+            <Link to="/login">Login</Link>
+          </div>
+        )}
         {loading && <h3 className={css.loading}>Loading..</h3>}
         <p className={css.errorMessage}>{error}</p>
         {success && <p>Kontoen er opprettet! Du kan nå logge inn <Link to="/login">her</Link></p>}
@@ -31,9 +36,6 @@ const Signup = () => {
         name="email"
         onChange={handleInputChange}
         className={`${css.formField} & ${formValidation?.emailError && css.inputError}`} />
-
-      <p className={css.errorMessage}>{formValidation?.emailError}</p>
-
       <label>Password: </label>
       <input type="password" value={formData.password}
         onChange={handleInputChange}
@@ -41,13 +43,9 @@ const Signup = () => {
         className={`${css.formField} & 
         ${formValidation?.passwordError && css.inputError}`} />
 
-      <label>Repeat password: </label>
-      <input type="password"
-        onChange={handleInputChange}
-        name="repeatPassword"
-        className={`${css.formField} & ${(!formValidation?.pwIsMatching) && css.inputError}`} />
-
       {renderResultsAndSubmitButton()}
+
+      <p className={css.errorMessage}>{formValidation?.emailError}</p>
     </form>
   )
 }

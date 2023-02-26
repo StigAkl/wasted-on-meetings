@@ -7,20 +7,17 @@ import { validateForm } from "../utils/validator";
 export interface FormData {
   email: string;
   password: string;
-  repeatPassword: string;
 }
 
 export interface FormValidation {
   emailError: string;
   passwordError: string;
-  pwIsMatching: boolean;
 }
 
 const useSignupForm = (url: string) => {
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
-    repeatPassword: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -28,7 +25,6 @@ const useSignupForm = (url: string) => {
   const [success, setSuccess] = useState(false);
   const [results, setResults] = useState<AxiosResponse>();
   const [formValidation, setFormValidation] = useState<FormValidation>({
-    pwIsMatching: true,
     emailError: "",
     passwordError: "",
   });
