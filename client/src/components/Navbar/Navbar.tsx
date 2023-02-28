@@ -39,7 +39,7 @@ const Navbar = ({ isMenuOpen, handleMenuClick }: Props) => {
   const loggedInRoutes = () => {
     return <>
       <NavbarLink to="/" onClick={handleMenuClick}>Home</NavbarLink>
-      <NavbarLink to="/statistics" onClick={handleMenuClick}>Statistics</NavbarLink>
+      <NavbarLink to="/#statistics" onClick={handleMenuClick}>Statistics</NavbarLink>
       <button onClick={(handleSignOut)} className={css.logoutButton}>Log out</button>
     </>
   }
@@ -54,7 +54,7 @@ const Navbar = ({ isMenuOpen, handleMenuClick }: Props) => {
   return (
     <header>
       <div className={css.container}>
-        <Link to="/">
+        <Link to="/welcome">
           <h2 className={css.logo}>Wasted On Meetings</h2>
         </Link>
 
@@ -71,7 +71,3 @@ const Navbar = ({ isMenuOpen, handleMenuClick }: Props) => {
 }
 
 export default Navbar;
-
-
-
-//responsive navbar: https://www.codevertiser.com/reactjs-responsive-navbar/

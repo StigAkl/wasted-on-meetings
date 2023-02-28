@@ -47,13 +47,13 @@ nav button.logoutButton:hover {
   color: var(--color-error);
 }
 
-.active {
+/* .active {
   font-weight: bold;
   color: var(--primary-color);
   background-color: var(--color-active-nav-background);
   border-radius: 5px;
   padding: 10px;
-}
+} */
 
 /* Responsive menu */
 
