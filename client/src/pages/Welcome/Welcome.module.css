@@ -1,0 +1,67 @@
+.hero {
+  font-family: Arial, sans-serif;
+  padding: 50px 20px;
+  text-align: center;
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(83, 146, 178, 0.7),
+      rgba(96, 18, 186, 0.7)
+    ),
+    url("../../assets/chart-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 50vh;
+}
+
+.hero h1 {
+  font-size: 48px;
+  color: #b6b9d6;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 24px;
+  color: #abaec9;
+  margin-bottom: 40px;
+}
+
+.chart-bg {
+  width: 100%;
+  background-image: url("../../assets/chart-background.jpg");
+  height: 100vh;
+}
+
+.cta {
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(83, 146, 178, 0.7),
+    rgba(97, 19, 185, 0.7)
+  );
+  padding: 20px 40px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.cta:hover {
+  background-color: #0c7cd5;
+}
+
+@media (max-width: 760px) {
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 20px;
+  }
+
+  .cta {
+    padding: 15px 25px;
+    font-size: 20px;
+  }
+}
