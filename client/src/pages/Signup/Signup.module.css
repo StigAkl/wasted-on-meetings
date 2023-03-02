@@ -24,6 +24,7 @@
   color: var(--text-color-white);
   border-radius: 5px;
   width: 50%;
+  cursor: pointer;
 }
 
 .errorMessage {
