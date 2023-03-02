@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react"
-import { useNavigate, Route, Routes } from "react-router-dom";
+import { useContext, useState } from "react"
+import { Route, Routes } from "react-router-dom";
 import { UserDetailsContext } from "./state/context/UserDetailsProvider";
 import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
@@ -15,28 +15,21 @@ import Welcome from "./pages/Welcome/Welcome";
 
 const App = () => {
   const { user } = useContext(UserDetailsContext);
-  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuClick = () => {
     setIsMenuOpen(!isMenuOpen);
   }
 
-  useEffect(() => {
-    if (!user) {
-      navigate("/welcome");
-    }
-  }, [])
-
   return (
-    <>
+    <div className="container">
       <Navbar isMenuOpen={isMenuOpen} handleMenuClick={handleMenuClick} />
       <Routes>
         {unauthenticatedRoutes()}
         {user && loggedInRoutes()}
         <Route path='*' element={<Welcome />} />
       </Routes>
-    </>
+    </div>
   )
 }
 
