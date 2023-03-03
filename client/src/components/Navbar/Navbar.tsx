@@ -44,16 +44,16 @@ const Navbar = ({ isMenuOpen, handleMenuClick }: Props) => {
 
   const loggedInRoutes = () => {
     return <>
-      <NavbarLink to="/" onClick={handleLinkClick}>Home</NavbarLink>
-      <NavbarLink to="/#statistics" onClick={handleLinkClick}>Statistics</NavbarLink>
+      <NavbarLink to="/">Home</NavbarLink>
+      <NavbarLink to="/#statistics">Statistics</NavbarLink>
       <button onClick={(handleSignOut)} className={css.logoutButton}>Log out</button>
     </>
   }
 
   const unAuthRoutes = () => {
     return <>
-      <NavbarLink to="/login" onClick={handleLinkClick}>Login</NavbarLink>
-      <NavbarLink to="/signup" onClick={handleLinkClick}>Signup</NavbarLink>
+      <NavbarLink to="/login">Login</NavbarLink>
+      <NavbarLink to="/signup">Signup</NavbarLink>
     </>
   }
 

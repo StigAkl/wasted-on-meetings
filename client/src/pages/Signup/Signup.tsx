@@ -11,8 +11,6 @@ const Signup = () => {
     handleSubmit,
     formValidation } = useSignupForm(signUpUrl);
 
-  console.log(formValidation);
-
   return (
     <Container variant='gradient'>
       <article className={css.loginForm}>
