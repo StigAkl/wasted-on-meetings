@@ -17,8 +17,8 @@ const App = () => {
   const { user } = useContext(UserDetailsContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleMenuClick = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const handleMenuClick = (openState: boolean) => {
+    setIsMenuOpen(openState);
   }
 
   return (
