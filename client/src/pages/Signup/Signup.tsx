@@ -5,10 +5,13 @@ import useSignupForm from '../../hooks/useSignupForm';
 import { signUpUrl } from '../../constants/api';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import FormCard from '../../components/FormCard/FormCard';
+import EmailInput from '../../components/FormCard/EmailInput';
+import PasswordInput from '../../components/FormCard/PasswordInput';
 
 const Signup = () => {
 
-  const { formData,
+  const {
     handleInputChange,
     handleSubmit,
     results,
@@ -17,27 +20,25 @@ const Signup = () => {
     success,
     formValidation } = useSignupForm(signUpUrl);
 
-  const emailInputClassNames = classNames(formValidation.emailError ? css.error : "");
-  const passwordInputClassNames = classNames(formValidation.passwordError ? css.error : "");
+  const emailError = formValidation.emailError ? true : false;
+  const passwordError = formValidation.passwordError ? true : false;
 
-  console.log(formValidation);
   return (
     <Container variant='gradient'>
-      <article className={css.loginForm}>
-        <h2>Sign up</h2>
+      <FormCard title="Sign up">
         <form onSubmit={handleSubmit}>
-          <input className={emailInputClassNames} type="email" name="email"
-            onChange={handleInputChange} placeholder="Email" value={formData.email} />
-
-          <input className={passwordInputClassNames} type="password" name="password"
-            onChange={handleInputChange} placeholder="Password" value={formData.password} />
+          <EmailInput error={emailError} onChange={handleInputChange} />
+          <PasswordInput error={passwordError} onChange={handleInputChange} />
           <Button loading={loading} >Sign up</Button>
+
           {error && <p className={css.signupError}>*{error}</p>}
-          {success && <p>Brukeren din er opprettet! <Link to="/login">Klikk her</Link> for å logge inn</p>}
+          {success && <p>Brukeren din er opprettet!
+            <Link to="/login">Klikk her</Link> for å logge inn</p>}
         </form>
-      </article>
+      </FormCard>
     </Container>
-  )
+
+  );
 }
 
 export default Signup;
