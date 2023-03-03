@@ -21,6 +21,8 @@ const App = () => {
     setIsMenuOpen(openState);
   }
 
+  console.log(import.meta.env.MODE)
+
   return (
     <div className="container">
       <Navbar isMenuOpen={isMenuOpen} handleMenuClick={handleMenuClick} />
