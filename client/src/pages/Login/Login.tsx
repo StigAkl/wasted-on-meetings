@@ -60,7 +60,7 @@ const Login = () => {
   };
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setPassword(password);
+    setPassword(event.target.value);
   };
 
 
