@@ -34,7 +34,7 @@ const App = () => {
 }
 
 const unauthenticatedRoutes = () => {
-  if (import.meta.env.VITE_APP_ENVIRONMENT === "stage") {
+  if (import.meta.env.MODE === "development") {
     return (
       <>
         <Route path="/welcome" element={<Welcome />} />
