@@ -10,7 +10,7 @@ const PasswordInput = ({ error, onChange }: Props) => {
   const className = error ? css.errorBorder : '';
 
   return (
-    <input className={className} type="password" name="password" onChange={onChange} />
+    <input className={className} placeholder="Password" type="password" name="password" onChange={onChange} />
   )
 }
 

@@ -12,7 +12,7 @@ const EmailInput = ({ error, onChange }: Props) => {
   const className = error ? css.errorBorder : '';
 
   return (
-    <input className={className} type="email" name="email" onChange={onChange} />
+    <input className={className} placeholder="Email" type="email" name="email" onChange={onChange} />
   )
 }
 
