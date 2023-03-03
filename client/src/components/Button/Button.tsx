@@ -23,7 +23,7 @@ const Button: FC<ButtonProps> = ({ variant = 'primary', size, loading, ...props 
   return (
     <>
       <button {...props} className={`${variantClass} ${styles.button} ${buttonSize}`}>
-        {loading ? <p>Loading..</p> : props.children}
+        {loading ? "Loading.." : props.children}
       </button>
     </>)
 }
