@@ -1,3 +1,9 @@
 :root {
   --box-shadow: 1px 1px 4px 4px rgba(0, 0, 0, 0.1);
+  --background-gradient: linear-gradient(
+      to bottom right,
+      rgba(99, 76, 173, 0.7),
+      rgba(96, 18, 186, 0.7)
+    ),
+    url("./assets/chart-background.jpg");
 }
