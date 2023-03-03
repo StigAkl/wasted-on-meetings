@@ -1,10 +1,15 @@
-import { FormEvent, useContext, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import css from './Login.module.css';
 import { UserDetailsContext } from "../../state/context/UserDetailsProvider";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { authUrl } from "../../constants/api";
 import { clearStorage, setTokens } from "../../utils/token";
+import FormCard from "../../components/FormCard/FormCard";
+import EmailInput from "../../components/FormCard/EmailInput";
+import PasswordInput from "../../components/FormCard/PasswordInput";
+import Container from "../../components/Container/Container";
+import Button from "../../components/Button/Button";
 
 const Login = () => {
 
@@ -23,11 +28,6 @@ const Login = () => {
   const [password, setPassword] = useState('Kake123!');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
-  const onSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    performLogin()
-  };
 
   const performLogin = async () => {
     setLoading(true);
@@ -55,26 +55,30 @@ const Login = () => {
     }
   }
 
+  const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setPassword(password);
+  };
+
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    performLogin();
+  }
+
   return (
-    <>
-      <form className={css.loginForm} onSubmit={onSubmit}>
-        <label>Email</label>
-        <input className={css.formField} type="email"
-          onChange={(e) => setEmail(e.target.value)} value={email} />
-        <label>Password</label>
-        <input className={css.formField} type="password"
-          onChange={(e) => setPassword(e.target.value)} value={password} />
-        <p className={css.errorMessage}>{error}</p>
-        {loading ? <p>Logging in..</p>
-          :
-          (
-            <div className={css.buttonGroup}>
-              <input type="submit" className={css.loginButton} value="Login" />
-              <Link to="/signup">Sign up</Link>
-            </div>
-          )}
-      </form>
-    </>
+    <Container variant='gradient'>
+      <FormCard title="Login">
+        <form onSubmit={handleSubmit}>
+          <EmailInput onChange={handleEmailChange} />
+          <PasswordInput onChange={handlePasswordChange} />
+          <Button loading={loading}>Login</Button>
+        </form>
+      </FormCard>
+    </Container>
   )
 };
 
