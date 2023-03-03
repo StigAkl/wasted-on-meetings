@@ -3,10 +3,16 @@ import styles from './Container.module.css';
 
 interface Props {
   children: ReactNode;
+  variant?: 'gradient' | 'default';
 }
-const Container = ({ children }: Props) => {
+
+const Container = ({ children, variant }: Props) => {
+  const className = variant === 'gradient' ?
+    styles.gradientContainer :
+    styles.container;
+
   return (
-    <article className={styles.container}>
+    <article className={className}>
       {children}
     </article>
   )

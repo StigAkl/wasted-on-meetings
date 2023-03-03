@@ -1,50 +1,29 @@
-.signupForm {
-  max-width: 400px;
-  margin: 100px auto;
-  background: var(--color-form-background);
+.loginForm {
+  width: 420px;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 8% 0 0;
+  max-width: 360px;
+  padding: 45px;
+}
+
+.loginForm input[type="text"],
+input[type="password"] {
   padding: 20px;
-  border-radius: 4px;
-  color: var(--color-text);
-  box-shadow: var(--box-shadow);
-}
-
-.formField {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.signupButton {
-  background-color: var(--primary-color);
   border: 0;
-  padding: 10px;
-  color: var(--text-color-white);
-  border-radius: 5px;
-  width: 50%;
+  width: 100%;
+  border-radius: 20px;
+  outline: none;
+  font-size: 14px;
+  margin: 0 0 15px;
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: 0.2s all ease;
 }
 
-.errorMessage {
-  color: var(--color-error);
-}
-
-.inputError {
-  border: 1px solid var(--color-error);
-}
-
-.loading {
-  color: var(--primary-color);
-}
-
-.buttonGroup {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.buttonGroup a {
-  color: var(--primary-color);
-  text-decoration: none;
+.loginForm input[type="text"]:focus,
+.loginForm input[type="password"]:focus {
+  padding: 22px;
 }

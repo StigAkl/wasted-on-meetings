@@ -24,11 +24,7 @@ export const passwordValidator = (p1: string): FormValidation => {
   };
 };
 
-export const emailValidator = (email: string): boolean => {
-  if (!email) return false;
-
-  if (!email.match(emailRegex)) return false;
-
+export const usernameValidator = (username: string): boolean => {
   return true;
 };
 
@@ -36,19 +32,19 @@ export const validateForm = (
   formData: FormData,
   setFormValidation: Dispatch<SetStateAction<FormValidationType>>
 ) => {
-  let emailError = "";
-  if (!emailValidator(formData.email)) {
-    emailError = "Du vet da hvordan en e-post ser ut?!";
+  let usernameError = "";
+  if (!usernameValidator(formData.username)) {
+    usernameError = "Du vet da hvordan en e-post ser ut?!";
   }
 
   const { passwordError } = passwordValidator(formData.password);
 
   setFormValidation({
-    emailError,
+    usernameError,
     passwordError,
   });
 
-  if (emailError || passwordError) return false;
+  if (usernameError || passwordError) return false;
 
   return true;
 };
