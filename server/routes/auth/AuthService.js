@@ -35,7 +35,6 @@ module.exports.signin = (req, res) => {
 };
 
 module.exports.signup = async (req, res) => {
-  console.log("signing up?");
   res.set(headers);
   const { email, password } = req.body;
 
