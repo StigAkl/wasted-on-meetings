@@ -24,7 +24,8 @@ header h1 {
 }
 
 nav a {
-  margin-left: 15px;
+  text-align: right;
+  margin-right: 15px;
   padding: 10px;
 }
 
@@ -47,13 +48,13 @@ nav button.logoutButton:hover {
   color: var(--color-error);
 }
 
-/* .active {
+.active {
   font-weight: bold;
   color: var(--primary-color);
   background-color: var(--color-active-nav-background);
   border-radius: 5px;
   padding: 10px;
-} */
+}
 
 /* Responsive menu */
 
@@ -80,13 +81,12 @@ nav button.logoutButton:hover {
   .navElements {
     position: absolute;
     right: 0;
-    top: 95px;
     width: 0px;
-    height: calc(100vh - 60px);
     transition: all 0.3s ease-in;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
+    border-radius: 0px 0px 0px 20px;
+    padding-bottom: 10px;
   }
 
   .navElements a:first-child {
@@ -94,6 +94,22 @@ nav button.logoutButton:hover {
   }
 
   .activeBar {
-    width: 270px;
+    width: 200px;
+  }
+
+  .active {
+    background-color: var(--color-header);
+    position: relative;
+  }
+
+  .active::before {
+    content: "";
+    background-color: var(--primary-color);
+    width: 5px;
+    height: 5px;
+    border-radius: 3px;
+    position: absolute;
+    top: 20px;
+    left: 100px;
   }
 }

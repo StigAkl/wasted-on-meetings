@@ -3,7 +3,6 @@ const { AUTH_ERROR } = require("../shared/constants/errors");
 const bcrypt = require("bcryptjs");
 
 const validateLogin = async (req, res, next) => {
-  console.log("VALIDATING");
   const { email, password } = req.body;
 
   if (!email || !password) {

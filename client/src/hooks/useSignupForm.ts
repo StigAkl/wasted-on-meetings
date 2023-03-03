@@ -5,18 +5,18 @@ import { resolveAxiosError } from "../utils/resolveAxiosError";
 import { validateForm } from "../utils/validator";
 
 export interface FormData {
-  username: string;
+  email: string;
   password: string;
 }
 
 export interface FormValidation {
-  usernameError: string;
+  emailError: string;
   passwordError: string;
 }
 
 const useSignupForm = (url: string) => {
   const [formData, setFormData] = useState<FormData>({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -25,7 +25,7 @@ const useSignupForm = (url: string) => {
   const [success, setSuccess] = useState(false);
   const [results, setResults] = useState<AxiosResponse>();
   const [formValidation, setFormValidation] = useState<FormValidation>({
-    usernameError: "",
+    emailError: "",
     passwordError: "",
   });
 
@@ -37,13 +37,11 @@ const useSignupForm = (url: string) => {
       setError("");
       setLoading(true);
       try {
-        const results = await axios.post(url, {
-          data: formData,
-        });
+        const results = await axios.post(url, formData);
         setSuccess(true);
         setResults(results);
-      } catch (error: any) {
-        setError(resolveAxiosError(error));
+      } catch (err: any) {
+        setError(resolveAxiosError(err));
       } finally {
         setLoading(false);
       }

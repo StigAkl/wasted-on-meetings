@@ -15,8 +15,4 @@ authRouter.post("/signup", (req, res) => {
   return authService.signup(req, res);
 });
 
-authRouter.post("/kake", async (req, res) => {
-  return await authService.kake(req, res);
-});
-
 module.exports = authRouter;

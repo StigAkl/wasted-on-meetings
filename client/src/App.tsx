@@ -17,11 +17,9 @@ const App = () => {
   const { user } = useContext(UserDetailsContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleMenuClick = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const handleMenuClick = (openState: boolean) => {
+    setIsMenuOpen(openState);
   }
-
-  console.log(import.meta.env.MODE);
 
   return (
     <div className="container">
@@ -36,7 +34,7 @@ const App = () => {
 }
 
 const unauthenticatedRoutes = () => {
-  if (import.meta.env.MODE === "development") {
+  if (import.meta.env.VITE_APP_ENVIRONMENT === "stage") {
     return (
       <>
         <Route path="/welcome" element={<Welcome />} />

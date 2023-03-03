@@ -5,9 +5,10 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'primary' | 'secondary'
   size?: 's' | 'm' | 'l'
   children: ReactNode
+  loading?: boolean
 }
 
-const Button: FC<ButtonProps> = ({ variant = 'primary', size, ...props }) => {
+const Button: FC<ButtonProps> = ({ variant = 'primary', size, loading, ...props }) => {
 
   let buttonSize = styles.medium;
   if (size === 's') {
@@ -22,7 +23,7 @@ const Button: FC<ButtonProps> = ({ variant = 'primary', size, ...props }) => {
   return (
     <>
       <button {...props} className={`${variantClass} ${styles.button} ${buttonSize}`}>
-        {props.children}
+        {loading ? <p>Loading..</p> : props.children}
       </button>
     </>)
 }

@@ -3,6 +3,7 @@ const passwordRegex =
   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
 const emailValidator = (email) => {
+  console.log("Email:", email);
   if (!email) {
     return false;
   }
@@ -15,11 +16,12 @@ const emailValidator = (email) => {
 };
 
 const passwordValidator = (password) => {
+  console.log("PASSWORD:", password);
   if (!password) {
     return false;
   }
 
-  if (!password.match(passwordRegex)) {
+  if (password.length < 7) {
     return false;
   }
 
