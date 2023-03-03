@@ -21,7 +21,8 @@ const App = () => {
     setIsMenuOpen(openState);
   }
 
-  console.log(import.meta.env.ENVIRONMENT)
+  console.log(import.meta.env.VITE_APP_ENVIRONMENT);
+  console.log(import.meta.env.MODE);
 
   return (
     <div className="container">
@@ -36,7 +37,7 @@ const App = () => {
 }
 
 const unauthenticatedRoutes = () => {
-  if (import.meta.env.ENVIRONMENT === "stage") {
+  if (import.meta.env.VITE_APP_ENVIRONMENT === "stage") {
     return (
       <>
         <Route path="/welcome" element={<Welcome />} />
@@ -54,7 +55,7 @@ const unauthenticatedRoutes = () => {
 }
 
 const loggedInRoutes = () => {
-  if (import.meta.env.ENVIRONMENT === "stage") {
+  if (import.meta.env.VITE_APP_ENVIRONMENT === "stage") {
     return (
       <>
         <Route path="/" element={<Welcome />} />
