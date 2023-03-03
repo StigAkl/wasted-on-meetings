@@ -15,7 +15,7 @@ interface FormValidation {
 export const passwordValidator = (p1: string): FormValidation => {
   let passwordError = "";
 
-  if (!p1 || !p1.match(passwordRegex)) {
+  if (!p1 || p1.length < 7) {
     passwordError = "Dette var dårlig passordvalg gitt. ";
   }
 
@@ -24,7 +24,7 @@ export const passwordValidator = (p1: string): FormValidation => {
   };
 };
 
-export const usernameValidator = (username: string): boolean => {
+export const emailValidator = (username: string): boolean => {
   return true;
 };
 
@@ -33,14 +33,14 @@ export const validateForm = (
   setFormValidation: Dispatch<SetStateAction<FormValidationType>>
 ) => {
   let usernameError = "";
-  if (!usernameValidator(formData.username)) {
+  if (!emailValidator(formData.email) || !formData.email.match(emailRegex)) {
     usernameError = "Du vet da hvordan en e-post ser ut?!";
   }
 
   const { passwordError } = passwordValidator(formData.password);
 
   setFormValidation({
-    usernameError,
+    emailError: usernameError,
     passwordError,
   });
 
