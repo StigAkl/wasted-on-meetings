@@ -1,17 +1,12 @@
 const getConnection = require("../dbconnection");
 
 const fetchUser = async (email) => {
-  console.log("CONNECTING TO DATABASE");
   const database = await getConnection();
-  console.log("CONNECTION ESTABLISHED");
   return new Promise((resolve, reject) => {
-    console.log("RUNNING QUERY");
     database.query("SELECT * FROM Users where email=?", [email], (err, row) => {
       if (err) {
-        console.log("REJECTING");
         reject(err);
       }
-      console.log("RESOLVING");
       resolve(row);
     });
   });
