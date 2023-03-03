@@ -24,8 +24,8 @@ const Login = () => {
     }
   }, [])
 
-  const [email, setEmail] = useState('kake@kake.no');
-  const [password, setPassword] = useState('Kake123!');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
