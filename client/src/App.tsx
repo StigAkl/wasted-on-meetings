@@ -21,8 +21,6 @@ const App = () => {
     setIsMenuOpen(!isMenuOpen);
   }
 
-  console.log(import.meta.env.MODE);
-
   return (
     <div className="container">
       <Navbar isMenuOpen={isMenuOpen} handleMenuClick={handleMenuClick} />
@@ -36,7 +34,7 @@ const App = () => {
 }
 
 const unauthenticatedRoutes = () => {
-  if (import.meta.env.MODE === "development") {
+  if (import.meta.env.VITE_APP_ENVIRONMENT === "stage") {
     return (
       <>
         <Route path="/welcome" element={<Welcome />} />
