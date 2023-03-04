@@ -44,18 +44,13 @@ const Home = () => {
     return <ActiveMeetingCard key={m.id} meeting={m} />
   });
 
-  const emptyStateContainer = (activeMeetings === undefined || activeMeetings.length === 0) ?
-    styles.emptyStateContainer :
-    "";
-
 
   if (loading) return <h3>Loading..</h3>
   return (
     <Container>
       {!active?.length && (
         <article className={styles.description}>
-          With our app, you can easily register the costs for your meetings and get a detailed overview of expenses.
-          By having full control over costs, you can identify areas for savings and reduce expenses for future meetings.
+          No active meetings
         </article>
       )}
 
@@ -63,9 +58,9 @@ const Home = () => {
         activeMeetings?.length !== 0 && (
           <>
             <Title>Active Meetings</Title>
-            <div className={styles.activeMeetingsWrapper}>
+            <article className={styles.activeMeetingsWrapper}>
               {activeMeetings}
-            </div>
+            </article>
           </>
         )
       }

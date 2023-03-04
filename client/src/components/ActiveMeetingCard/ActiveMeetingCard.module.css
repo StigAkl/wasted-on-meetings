@@ -1,6 +1,7 @@
 .card {
-  background-color: #fff;
-  box-shadow: var(--box-shadow);
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   padding: 16px;
   display: flex;
@@ -21,14 +22,9 @@
   justify-content: space-between;
 }
 
-.participants,
-.cost {
-  font-weight: bold;
-}
-
 .progressBar {
   font-size: 12px;
-  color: white;
+  color: var(--primary-color);
   height: 16px;
   border-radius: 4px;
   background-color: #f0f0f0;
@@ -42,9 +38,8 @@
 }
 
 .cardTitle {
-  font-weight: bold;
   font-size: 20px;
-  color: var(--primary-color);
+  color: #b6b9d6;
 }
 
 .percent {

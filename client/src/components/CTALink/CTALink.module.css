@@ -1,0 +1,25 @@
+.cta {
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(83, 146, 178, 0.7),
+    rgba(97, 19, 185, 0.7)
+  );
+  padding: 15px 60px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 22px;
+  color: #ffffff;
+  font-weight: 400;
+  display: inline-block;
+}
+
+.cta:hover {
+  background-color: #0c7cd5;
+}
+
+@media (max-width: 760px) {
+  .cta {
+    padding: 15px 25px;
+    font-size: 20px;
+  }
+}
