@@ -50,12 +50,12 @@ const Home = () => {
     <Container>
       {!active?.length && (
         <article className={styles.description}>
-          No active meetings
+          You currently don't have any active meetings!
         </article>
       )}
 
       {
-        activeMeetings?.length !== 0 && (
+        activeMeetings?.length !== undefined && activeMeetings.length !== 0 && (
           <>
             <Title>Active Meetings</Title>
             <article className={styles.activeMeetingsWrapper}>

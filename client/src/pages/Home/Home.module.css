@@ -21,4 +21,8 @@
   .activeMeetingsWrapper {
     flex-direction: column;
   }
+
+  .description {
+    margin-top: 150px;
+  }
 }
