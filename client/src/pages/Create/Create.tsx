@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import Button from "../../components/Button/Button";
 import Container from "../../components/Container/Container";
 import styles from './Create.module.css';
-import { getRoundedTime, getRounderTimeOneHourLater } from "../../utils/helpers";
+import { getRoundedTime, getRounderTimeOneHourLater } from "../../utils/dateTimeHelpers";
 import { createMeetingUrl } from "../../constants/api";
 import useRequest from "../../hooks/useRequest";
 import { Meeting } from '../../types';

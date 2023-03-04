@@ -87,6 +87,7 @@ nav button.logoutButton:hover {
     flex-direction: column;
     border-radius: 0px 0px 0px 20px;
     padding-bottom: 10px;
+    height: 100%;
   }
 
   .navElements a:first-child {
@@ -94,7 +95,7 @@ nav button.logoutButton:hover {
   }
 
   .activeBar {
-    width: 200px;
+    width: 50%;
   }
 
   .active {
@@ -102,7 +103,7 @@ nav button.logoutButton:hover {
     position: relative;
   }
 
-  .active::before {
+  /* .active::before {
     content: "";
     background-color: var(--primary-color);
     width: 5px;
@@ -111,5 +112,5 @@ nav button.logoutButton:hover {
     position: absolute;
     top: 20px;
     left: 100px;
-  }
+  } */
 }
