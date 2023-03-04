@@ -23,7 +23,6 @@ const ActiveMeetingCard = ({ meeting }: Props) => {
 
   return (
     <article className={styles.card}>
-      <span className={styles.cardTitle}>Current Meeting</span>
       <div className={styles.participants}>
         Participants: {meeting.participants}
       </div>

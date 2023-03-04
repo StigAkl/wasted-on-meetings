@@ -1,13 +1,12 @@
 import styles from './Home.module.css';
 import useRequest from '../../hooks/useRequest';
-import Button from '../../components/Button/Button';
 import { useNavigate } from "react-router-dom";
 import { Meeting } from '../../types';
 import ActiveMeetingCard from '../../components/ActiveMeetingCard/ActiveMeetingCard';
-import Title from '../../components/Title/Title';
 import { useEffect } from 'react';
 import { fetchMeetings } from '../../constants/api';
 import Container from '../../components/Container/Container';
+import MeetingsDashboard from '../../components/MeetingsDashboard/MeetingsDashboard';
 
 interface Meetings {
   meetings: Meeting[]
@@ -27,14 +26,7 @@ const Home = () => {
     navigate("/create")
   }
 
-  const meetings = data?.meetings?.map(m => {
-    const meeting = {
-      ...m,
-      startTime: new Date(m.startTime),
-      endTime: new Date(m.endTime)
-    };
-    return meeting;
-  })
+  const meetings = getMeetings(data);
 
   const active = meetings?.filter(m =>
     m.startTime <= new Date() &&
@@ -48,30 +40,22 @@ const Home = () => {
 
   return (
     <Container>
-      {!active?.length && (
-        <article className={styles.description}>
-          No active meetings
-        </article>
-      )}
-
-      {
-        activeMeetings?.length !== 0 && (
-          <>
-            <Title>Active Meetings</Title>
-            <article className={styles.activeMeetingsWrapper}>
-              {activeMeetings}
-            </article>
-          </>
-        )
-      }
-
-      <article className={styles.buttonSpacing}>
-        <Button size='l' onClick={handleOnclick} className={styles.styledButton} variant='primary'>
-          New meeting
-        </Button>
-      </article>
+      <MeetingsDashboard meetings={meetings} />
     </Container>
   )
 }
 
+const getMeetings = (data: Meetings | null) => {
+  const meetings = data?.meetings?.map(m => {
+    const meeting = {
+      ...m,
+      startTime: new Date(m.startTime),
+      endTime: new Date(m.endTime)
+    };
+    return meeting;
+  })
+
+  if (meetings === undefined || meetings === null) return [];
+  return meetings;
+}
 export default Home;

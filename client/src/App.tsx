@@ -6,9 +6,7 @@ import "./App.css";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Home from "./pages/Home/Home";
-import Meetings from "./pages/Meetings";
 import Statistics from "./pages/Statistics";
-import Settings from "./pages/Settings";
 import Create from "./pages/Create/Create";
 import './variables.module.css';
 import Welcome from "./pages/Welcome/Welcome";
@@ -57,10 +55,8 @@ const loggedInRoutes = () => {
       <>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/Meetings" element={<Meetings />} />
         <Route path="/Statistics" element={<Statistics />} />
         <Route path="/Create" element={<Create />} />
-        <Route path="/Settings" element={<Settings />} />
       </>
     )
   }
