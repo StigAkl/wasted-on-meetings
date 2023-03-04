@@ -7,6 +7,7 @@ import ActiveMeetingCard from '../../components/ActiveMeetingCard/ActiveMeetingC
 import Title from '../../components/Title/Title';
 import { useEffect } from 'react';
 import { fetchMeetings } from '../../constants/api';
+import Container from '../../components/Container/Container';
 
 interface Meetings {
   meetings: Meeting[]
@@ -50,7 +51,7 @@ const Home = () => {
 
   if (loading) return <h3>Loading..</h3>
   return (
-    <section className={`${styles.container} ${emptyStateContainer}`}>
+    <Container>
       {!active?.length && (
         <article className={styles.description}>
           With our app, you can easily register the costs for your meetings and get a detailed overview of expenses.
@@ -74,7 +75,7 @@ const Home = () => {
           New meeting
         </Button>
       </article>
-    </section >
+    </Container>
   )
 }
 

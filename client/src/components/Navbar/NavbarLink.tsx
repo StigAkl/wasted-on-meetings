@@ -1,4 +1,4 @@
-import { ReactNode, SetStateAction } from "react"
+import { ReactNode } from "react"
 import { NavLink } from "react-router-dom";
 import css from './Navbar.module.css';
 

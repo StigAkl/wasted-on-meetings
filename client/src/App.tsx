@@ -55,7 +55,7 @@ const loggedInRoutes = () => {
   if (import.meta.env.VITE_APP_ENVIRONMENT === "stage") {
     return (
       <>
-        <Route path="/" element={<Welcome />} />
+        <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/Meetings" element={<Meetings />} />
         <Route path="/Statistics" element={<Statistics />} />

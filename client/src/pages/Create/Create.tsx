@@ -27,7 +27,6 @@ const initialFormState: FormData = {
 
 const Create = () => {
   const [form, setForm] = useState<FormData>(initialFormState)
-  const [success, setSuccess] = useState(false);
   const { data, error, loading, performRequest } = useRequest<Meetings>(createMeetingUrl);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {

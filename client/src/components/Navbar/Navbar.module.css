@@ -83,6 +83,7 @@ nav button.logoutButton:hover {
     right: 0;
     width: 0px;
     transition: all 0.3s ease-in;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     border-radius: 0px 0px 0px 20px;
