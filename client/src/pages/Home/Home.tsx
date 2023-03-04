@@ -44,8 +44,8 @@ const Home = () => {
     return <ActiveMeetingCard key={m.id} meeting={m} />
   });
 
-
   if (loading) return <h3>Loading..</h3>
+
   return (
     <Container>
       {!active?.length && (
