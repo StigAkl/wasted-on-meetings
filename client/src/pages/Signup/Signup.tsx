@@ -25,17 +25,19 @@ const Signup = () => {
 
   return (
     <Container variant='gradient'>
-      <FormCard title="Sign up">
-        <form onSubmit={handleSubmit}>
-          <EmailInput error={emailError} onChange={handleInputChange} />
-          <PasswordInput error={passwordError} onChange={handleInputChange} />
-          <Button loading={loading} >Sign up</Button>
+      <section className={css.signupContainer}>
+        <FormCard title="Sign up">
+          <form onSubmit={handleSubmit}>
+            <EmailInput error={emailError} onChange={handleInputChange} />
+            <PasswordInput error={passwordError} onChange={handleInputChange} />
+            <Button loading={loading} >Sign up</Button>
 
-          {error && <p className={css.signupError}>*{error}</p>}
-          {success && <p>Brukeren din er opprettet!
-            <Link to="/login">Klikk her</Link> for å logge inn</p>}
-        </form>
-      </FormCard>
+            {error && <p className={css.signupError}>*{error}</p>}
+            {success && <p>Brukeren din er opprettet!
+              <Link to="/login">Klikk her</Link> for å logge inn</p>}
+          </form>
+        </FormCard>
+      </section>
     </Container>
 
   );

@@ -31,7 +31,7 @@ const Home = () => {
   if (loading) return <h3>Loading..</h3>
 
   return (
-    <Container>
+    <Container variant='gradient'>
       <MeetingsDashboard meetings={meetings} />
     </Container>
   )
