@@ -1,5 +1,6 @@
 import { Meeting } from '../../types';
 import { activeMeetingsFilter, calculateMeetingdurationInHours, previousMeetingsFilter } from '../../utils/filters';
+import { H2 } from '../Typography';
 import styles from './MeetingsDashboard.module.css';
 import MeetingSummary from './MeetingSummary';
 
@@ -36,7 +37,6 @@ const MeetingsDashboard = ({ meetings }: Props) => {
 
   return (
     <section className={styles.container}>
-      <h2>Meeting Summary</h2>
       <MeetingSummary summary={summary} />
     </section>
   )

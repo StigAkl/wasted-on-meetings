@@ -1,6 +1,7 @@
 import { CalendarIcon } from '../Icons/CalendarIcon';
 import { ClockIcon } from '../Icons/ClockIcon';
 import { MoneyBagIcon } from '../Icons/MoneyBagIcon';
+import { H2 } from '../Typography';
 import { Summary } from './MeetingsDashboard';
 import styles from './MeetingSummary.module.css';
 
@@ -16,9 +17,10 @@ const formatter = new Intl.NumberFormat('no-NO', {
 const MeetingSummary = ({ summary }: Props) => {
   return (
     <>
+      <H2 variant='gradient'>Meeting Summary</H2>
       <div className={styles.cardContainer}>
         <div className={styles.card}>
-          <span className={styles.cardTitle}>No. meetings</span>
+          <span className={styles.cardTitle}>Meetings</span>
           <span className={styles.data}>
             {summary.meetings}
           </span>
@@ -27,7 +29,7 @@ const MeetingSummary = ({ summary }: Props) => {
           </div>
         </div>
         <div className={styles.card}>
-          <span className={styles.cardTitle}>Total Hours</span>
+          <span className={styles.cardTitle}>Hours</span>
           <span className={styles.data}>
             {summary.hours.toFixed(1)}
           </span>

@@ -3,7 +3,6 @@ import Container from '../../components/Container/Container';
 import Button from '../../components/Button/Button';
 import useSignupForm from '../../hooks/useSignupForm';
 import { signUpUrl } from '../../constants/api';
-import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import FormCard from '../../components/FormCard/FormCard';
 import EmailInput from '../../components/FormCard/EmailInput';

@@ -6,4 +6,6 @@
       rgba(96, 18, 186, 0.7)
     ),
     url("./assets/chart-background.jpg");
+
+  --break-point: 960;
 }

@@ -45,7 +45,6 @@ const Navbar = ({ isMenuOpen, handleMenuClick }: Props) => {
   const loggedInRoutes = () => {
     return <>
       <NavbarLink to="/">Home</NavbarLink>
-      <NavbarLink to="/#statistics">Statistics</NavbarLink>
       <button onClick={(handleSignOut)} className={css.logoutButton}>Log out</button>
     </>
   }
