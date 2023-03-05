@@ -2,11 +2,11 @@ import styles from './Home.module.css';
 import useRequest from '../../hooks/useRequest';
 import { useNavigate } from "react-router-dom";
 import { Meeting } from '../../types';
-import ActiveMeetingCard from '../../components/ActiveMeetingCard/ActiveMeetingCard';
 import { useEffect } from 'react';
 import { fetchMeetings } from '../../constants/api';
 import Container from '../../components/Container/Container';
 import MeetingsDashboard from '../../components/MeetingsDashboard/MeetingsDashboard';
+
 
 interface Meetings {
   meetings: Meeting[]
@@ -22,7 +22,7 @@ const Home = () => {
   }, []);
 
 
-  const handleOnclick = () => {
+  const newMeetingClick = () => {
     navigate("/create")
   }
 

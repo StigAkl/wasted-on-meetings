@@ -17,6 +17,7 @@ const formatter = new Intl.NumberFormat('no-NO', {
 const MeetingSummary = ({ summary }: Props) => {
   return (
     <>
+      <div className={styles.dividingLine}></div>
       <H2 variant='gradient'>Meeting Summary</H2>
       <div className={styles.cardContainer}>
         <div className={styles.card}>
@@ -46,8 +47,6 @@ const MeetingSummary = ({ summary }: Props) => {
           <span className={styles.cardTitle}>Total Cost</span>
         </div>
       </div>
-
-      <div className={styles.dividingLine}></div>
     </>
   )
 }

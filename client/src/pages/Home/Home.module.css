@@ -17,6 +17,11 @@
   min-width: 350px;
 }
 
+.createButton {
+  max-width: 300px;
+  margin-top: 20px;
+}
+
 @media (max-width: 990px) {
   .activeMeetingsWrapper {
     flex-direction: column;

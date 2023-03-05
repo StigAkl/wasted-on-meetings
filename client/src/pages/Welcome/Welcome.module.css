@@ -10,13 +10,13 @@
 
 .container h1 {
   font-size: 48px;
-  color: #b6b9d6;
+  color: var(--pink-text-light);
   margin-bottom: 20px;
 }
 
 .container p {
   font-size: 24px;
-  color: #b6b9d6;
+  color: var(--pink-text-light);
   margin-bottom: 40px;
 }
 
@@ -27,11 +27,11 @@
 }
 
 .loginLink {
-  color: #fff;
+  color: var(--text-color-white);
 }
 
 .loginText {
-  color: #b6b9d6;
+  color: var(--pink-text-light);
   margin-top: 25px;
 }
 
