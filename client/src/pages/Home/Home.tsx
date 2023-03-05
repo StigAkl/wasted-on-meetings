@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { fetchMeetings } from '../../constants/api';
 import Container from '../../components/Container/Container';
 import MeetingsDashboard from '../../components/MeetingsDashboard/MeetingsDashboard';
+import Loader from '../../components/Loader';
 
 
 interface Meetings {
@@ -28,7 +29,7 @@ const Home = () => {
 
   const meetings = getMeetings(data);
 
-  if (loading) return <h3>Loading..</h3>
+  if (loading) return <Loader />
 
   return (
     <Container variant='gradient'>

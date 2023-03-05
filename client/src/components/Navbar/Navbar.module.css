@@ -34,11 +34,12 @@ nav a {
 nav button {
   background: none;
   color: var(--text-color-white);
-  border: none;
   border-radius: 4px;
   font-family: "Poppins";
   cursor: pointer;
+  border: none;
   font-size: 1em;
+  margin-right: 15px;
 }
 
 nav button.logoutButton {
@@ -81,13 +82,14 @@ nav button.logoutButton:hover {
     position: absolute;
     right: 0;
     width: 0px;
+    z-index: 1000;
     transition: all 0.3s cubic-bezier(0.73, -0.64, 0.32, 1.83);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border-radius: 0px 0px 0px 20px;
+    align-items: flex-end;
     padding-bottom: 10px;
-    height: 100%;
+    height: auto;
   }
 
   .navElements a:first-child {
@@ -95,8 +97,8 @@ nav button.logoutButton:hover {
   }
 
   .activeBar {
-    width: 50%;
-    background-color: var(--color-header);
+    width: 55%;
+    background-color: rgb(103, 89, 160);
   }
 
   .active {

@@ -11,6 +11,12 @@
   --pink-text-light: #b9abd0;
   --card-background-light-opcaity: rgba(255, 255, 255, 0.1);
   --h2-color: rgb(227, 228, 240);
+  --purple-gradient: linear-gradient(
+    to bottom right,
+    rgba(83, 146, 178, 0.7),
+    rgba(97, 19, 185, 0.7)
+  );
+  --button-primary: #4a3890;
 
   /* Nav*/
   --nav-background-color: #fff;

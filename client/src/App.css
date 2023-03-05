@@ -13,8 +13,65 @@ body {
 }
 
 .container {
+  min-height: 100vh;
   height: 100vh;
   display: flex;
   flex-direction: column;
   margin: 0;
+}
+
+.load-wrapp {
+  width: 300px;
+  height: 100vh;
+  margin: 0 10px 10px 0;
+  padding: 20px 20px 20px;
+  border-radius: 5px;
+  text-align: center;
+  color: var(--pink-text-light);
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.load-wrapp p {
+  padding: 0 0 20px;
+}
+.load-wrapp:last-child {
+  margin-right: 0;
+}
+
+.line {
+  display: inline-block;
+  width: 35px;
+  height: 70px;
+  border-radius: 15px;
+  background-color: rgb(110, 67, 159);
+}
+
+.load-1 .line:nth-last-child(1) {
+  animation: loadingA 1.5s 1s infinite;
+  animation-delay: 0s;
+}
+.load-1 .line:nth-last-child(2) {
+  animation: loadingA 1.5s 0.5s infinite;
+  animation-delay: 0.3s;
+}
+.load-1 .line:nth-last-child(3) {
+  animation: loadingA 1.5s 0s infinite;
+  animation-delay: 0.6s;
+}
+
+@keyframes loadingA {
+  0% {
+    height: 25px;
+  }
+
+  50% {
+    height: 75px;
+  }
+
+  100% {
+    height: 25px;
+  }
 }

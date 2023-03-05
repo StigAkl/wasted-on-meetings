@@ -21,4 +21,14 @@
   .container {
     margin: 0;
   }
+
+  .gradientContainer {
+    height: 100%;
+  }
+}
+
+@media (max-width: 660px) {
+  .gradientContainer {
+    height: auto;
+  }
 }
