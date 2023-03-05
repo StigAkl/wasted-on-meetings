@@ -49,6 +49,9 @@ const Navbar = ({ isMenuOpen, handleMenuClick }: Props) => {
     </>
   }
 
+
+  const headerLink = user ? "/" : "/welcome";
+
   const unAuthRoutes = () => {
     return <>
       <NavbarLink to="/login">Login</NavbarLink>
@@ -59,8 +62,8 @@ const Navbar = ({ isMenuOpen, handleMenuClick }: Props) => {
   return (
     <header>
       <div className={css.container}>
-        <Link to="/welcome">
-          <h2 className={css.logo}>Wasted On Meetings</h2>
+        <Link to={headerLink}>
+          <h1>Wasted On Meetings</h1>
         </Link>
 
         <div ref={burgerRef} className={css.menuIcon} onClick={handleLinkClick}>

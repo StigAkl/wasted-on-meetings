@@ -16,7 +16,6 @@
   padding: 30px 15px;
   border-radius: 20px;
   color: var(--pink-text-light);
-  line-height: 1.5;
   flex: 1;
 }
 
@@ -47,20 +46,20 @@
 }
 
 .icon {
-  stroke: var(--primary-color);
+  stroke: var(--text-color-white);
   width: 34px;
   height: 30px;
-}
-
-@media (max-width: 960px) {
-  .icon {
-    display: none;
-  }
+  margin-top: 5px;
 }
 
 @media (max-width: 660px) {
   .card {
     width: 100%;
     flex: 0 1 auto;
+    padding: 10px;
+  }
+
+  .icon {
+    margin-bottom: 5px;
   }
 }

@@ -3,6 +3,7 @@
 header {
   background: var(--color-header);
   box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(131, 66, 201, 0.4);
 }
 
 header .container {
@@ -15,7 +16,8 @@ header .container {
 }
 
 header a {
-  color: var(--primary-color);
+  color: var(--text-color-white);
+  opacity: 0.9;
   text-decoration: none;
 }
 
@@ -30,9 +32,9 @@ nav a {
 }
 
 nav button {
-  background: var(--color-header);
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+  background: none;
+  color: var(--text-color-white);
+  border: none;
   border-radius: 4px;
   font-family: "Poppins";
   cursor: pointer;
@@ -44,15 +46,14 @@ nav button.logoutButton {
 }
 
 nav button.logoutButton:hover {
-  border: 2px solid var(--color-error);
   color: var(--color-error);
 }
 
 .active {
-  color: var(--primary-color);
-  background-color: var(--color-active-nav-background);
+  color: var(--text-color-white);
   border-radius: 5px;
   padding: 10px;
+  text-decoration: underline;
 }
 
 /* Responsive menu */
@@ -60,7 +61,6 @@ nav button.logoutButton:hover {
 .navElements {
   top: 60px;
   display: flex;
-  background-color: var(--nav-background-color);
 }
 
 .menuIcon {
@@ -81,7 +81,7 @@ nav button.logoutButton:hover {
     position: absolute;
     right: 0;
     width: 0px;
-    transition: all 0.3s ease-in;
+    transition: all 0.3s cubic-bezier(0.73, -0.64, 0.32, 1.83);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -96,11 +96,17 @@ nav button.logoutButton:hover {
 
   .activeBar {
     width: 50%;
+    background-color: var(--color-header);
   }
 
   .active {
-    background-color: var(--color-header);
     position: relative;
+    color: var(--secondary-color);
+  }
+
+  nav button {
+    background: none;
+    color: var(--text-color-white);
   }
 
   /* .active::before {

@@ -20,29 +20,30 @@ const MeetingSummary = ({ summary }: Props) => {
       <H2 variant='gradient'>Meeting Summary</H2>
       <div className={styles.cardContainer}>
         <div className={styles.card}>
-          <span className={styles.cardTitle}>Meetings</span>
-          <span className={styles.data}>
-            {summary.meetings}
-          </span>
           <div className={styles.icon}>
             <CalendarIcon />
           </div>
+          <span className={styles.data}>
+            {summary.meetings}
+          </span>
+          <span className={styles.cardTitle}>Meetings</span>
         </div>
         <div className={styles.card}>
-          <span className={styles.cardTitle}>Hours</span>
-          <span className={styles.data}>
-            {summary.hours.toFixed(1)}
-          </span>
           <div className={styles.icon}>
             <ClockIcon />
           </div>
+          <span className={styles.data}>
+            {summary.hours.toFixed(1)}
+          </span>
+          <span className={styles.cardTitle}>Hours spent</span>
+
         </div>
         <div className={styles.card}>
-          <span className={styles.cardTitle}>Total Cost</span>
-          <span className={styles.data}>{formatter.format(summary.cost)}</span>
           <div className={styles.icon}>
             <MoneyBagIcon />
           </div>
+          <span className={styles.data}>{formatter.format(summary.cost)}</span>
+          <span className={styles.cardTitle}>Total Cost</span>
         </div>
       </div>
 
