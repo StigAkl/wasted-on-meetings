@@ -28,14 +28,6 @@ const Home = () => {
 
   const meetings = getMeetings(data);
 
-  const active = meetings?.filter(m =>
-    m.startTime <= new Date() &&
-    m.endTime >= new Date());
-
-  const activeMeetings = active?.map(m => {
-    return <ActiveMeetingCard key={m.id} meeting={m} />
-  });
-
   if (loading) return <h3>Loading..</h3>
 
   return (

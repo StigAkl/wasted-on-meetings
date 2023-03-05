@@ -23,10 +23,15 @@ const MeetingsDashboard = ({ meetings }: Props) => {
     return acc + meetingDuration;
   }, 0);
 
+  const totalCost = previousMeetings.reduce((acc, cur) => {
+    const meetingDuration = calculateMeetingdurationInHours(cur);
+    return acc + (meetingDuration * cur.hourlyRate * cur.participants);
+  }, 0);
+
   const summary = {
     meetings: meetings.length,
     hours: totalMeetingHours,
-    cost: 83000
+    cost: totalCost
   }
 
   return (
