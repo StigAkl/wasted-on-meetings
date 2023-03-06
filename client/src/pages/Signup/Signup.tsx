@@ -23,7 +23,7 @@ const Signup = () => {
   const passwordError = formValidation.passwordError ? true : false;
 
   return (
-    <Container variant='gradient-login'>
+    <Container>
       <section className={css.signupContainer}>
         <FormCard title="Sign up">
           <form onSubmit={handleSubmit}>

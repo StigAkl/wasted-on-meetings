@@ -6,7 +6,7 @@ import styles from './Welcome.module.css';
 //<section className={styles.container}>
 const Welcome = () => {
   return (
-    <Container variant='gradient'>
+    <Container>
       <section className={styles.container}>
         <h1>Welcome to Meeting Costs Tracker</h1>
         <p>Track your meeting expences and save money!</p>
