@@ -70,13 +70,13 @@ const Login = () => {
   }
 
   return (
-    <Container variant='gradient'>
+    <Container variant='gradient-login'>
       <section className={css.loginContainer}>
         <FormCard title="Login">
           <form onSubmit={handleSubmit}>
             <EmailInput onChange={handleEmailChange} />
             <PasswordInput onChange={handlePasswordChange} />
-            <Button loading={loading}>Login</Button>
+            <Button loading={loading} variant='gradient'>Login</Button>
           </form>
         </FormCard>
       </section>

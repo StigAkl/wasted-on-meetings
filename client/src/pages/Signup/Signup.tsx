@@ -23,13 +23,13 @@ const Signup = () => {
   const passwordError = formValidation.passwordError ? true : false;
 
   return (
-    <Container variant='gradient'>
+    <Container variant='gradient-login'>
       <section className={css.signupContainer}>
         <FormCard title="Sign up">
           <form onSubmit={handleSubmit}>
             <EmailInput error={emailError} onChange={handleInputChange} />
             <PasswordInput error={passwordError} onChange={handleInputChange} />
-            <Button loading={loading} >Sign up</Button>
+            <Button loading={loading} variant='gradient'>Sign up</Button>
 
             {error && <p className={css.signupError}>*{error}</p>}
             {success && <p>Brukeren din er opprettet!
