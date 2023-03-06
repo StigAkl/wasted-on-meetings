@@ -1,27 +1,25 @@
+import classNames from 'classnames';
 import { ReactNode } from 'react';
 import styles from './Container.module.css';
 
-type Variant = 'gradient' | 'default' | 'gradient-login'
-
+type JustifyContent = 'center' | 'start';
 interface Props {
   children: ReactNode;
-  variant?: Variant;
+  justifyContent?: string;
 }
 
-const Container = ({ children, variant }: Props) => {
-  const className = getClass(variant);
+const Container = ({ children, justifyContent }: Props) => {
+
+  const containerClass = classNames(styles.container, {
+    [styles.center]: justifyContent === 'center',
+    [styles.start]: justifyContent === 'start'
+  });
 
   return (
-    <article className={className}>
+    <article className={containerClass}>
       {children}
     </article>
   )
 }
 
-const getClass = (variant: Variant | undefined) => {
-  if (!variant) return styles.container;
-  if (variant === 'gradient') return styles.gradientContainer;
-  if (variant === 'gradient-login') return styles.gradientContainerLogin;
-  return styles.container;
-}
 export default Container;

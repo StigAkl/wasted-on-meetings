@@ -70,7 +70,7 @@ const Login = () => {
   }
 
   return (
-    <Container variant='gradient-login'>
+    <Container justifyContent="center">
       <section className={css.loginContainer}>
         <FormCard title="Login">
           <form onSubmit={handleSubmit}>

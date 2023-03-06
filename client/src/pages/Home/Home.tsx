@@ -32,7 +32,7 @@ const Home = () => {
   if (loading) return <Loader />
 
   return (
-    <Container variant='gradient'>
+    <Container>
       <MeetingsDashboard meetings={meetings} />
     </Container>
   )
