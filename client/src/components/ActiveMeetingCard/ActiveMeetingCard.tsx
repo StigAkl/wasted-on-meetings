@@ -22,8 +22,7 @@ const ActiveMeetingCard = ({ meeting }: Props) => {
   const durationInMinutes = (meeting.endTime.getTime() - meeting.startTime.getTime()) / 1000 / 60;
   const totalCost = (durationInMinutes / 60) * meeting.hourlyRate;
   let remainingTimeInMinutes = (meeting.endTime.getTime() - new Date().getTime()) / 1000 / 60;
-  let progress = 80//(1 - remainingTimeInMinutes / durationInMinutes) * 100;
-
+  let progress = (1 - remainingTimeInMinutes / durationInMinutes) * 100;
 
 
   return (
