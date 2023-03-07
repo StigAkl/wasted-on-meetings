@@ -31,7 +31,7 @@ const Signup = () => {
             <PasswordInput error={passwordError} onChange={handleInputChange} />
             <Button loading={loading} variant='gradient'>Sign up</Button>
 
-            {error && <p className={css.signupError}>*{error}</p>}
+            {error && <p>*{error}</p>}
             {success && <p>Brukeren din er opprettet!
               <Link to="/login">Klikk her</Link> for å logge inn</p>}
           </form>
