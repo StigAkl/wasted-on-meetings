@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import Button from "../../components/Button/Button";
-import Container from "../../components/Container/Container";
+import Button from "@wom/Button/Button";
+import Container from "@wom/Container/Container";
 import styles from './Create.module.css';
 import { getRoundedTime, getRounderTimeOneHourLater } from "../../utils/dateTimeHelpers";
 import { createMeetingUrl } from "../../constants/api";

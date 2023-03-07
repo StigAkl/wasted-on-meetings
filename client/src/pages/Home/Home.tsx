@@ -1,12 +1,11 @@
-import styles from './Home.module.css';
 import useRequest from '../../hooks/useRequest';
 import { useNavigate } from "react-router-dom";
 import { Meeting } from '../../types';
 import { useEffect } from 'react';
 import { fetchMeetings } from '../../constants/api';
-import Container from '../../components/Container/Container';
-import MeetingsDashboard from '../../components/MeetingsDashboard/MeetingsDashboard';
-import Loader from '../../components/Loader';
+import Container from '@wom/Container/Container';
+import MeetingsDashboard from '@wom/MeetingsDashboard/MeetingsDashboard';
+import Loader from '@wom/Loader';
 
 
 interface Meetings {

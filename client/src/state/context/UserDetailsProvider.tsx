@@ -3,7 +3,7 @@ import { getAxiosInstance, getToken, setToken } from "../../utils/token";
 import { fetchUserUrl } from "../../constants/api";
 import { ACCESS_TOKEN } from "../../constants/constants";
 import { InitialUserDetails, IUserDetails } from "../types/State";
-import Loader from "../../components/Loader";
+import Loader from "@wom/Loader";
 
 interface Props {
   children: ReactNode

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import Container from '../../components/Container/Container';
-import CTALink from '../../components/CTALink/CTALink';
+import Container from '@wom/Container/Container';
+import CTALink from '@wom/CTALink/CTALink';
 import styles from './Welcome.module.css';
 
 //<section className={styles.container}>
