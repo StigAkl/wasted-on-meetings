@@ -40,7 +40,7 @@ const ActiveMeetingCard = ({ meeting }: Props) => {
       </div>
       Remaining
       <div className={styles.progressBar}>
-        <div className={styles.progress} style={{ width: `${80}%` }}>
+        <div className={styles.progress} style={{ width: `${progress}%` }}>
           <span className={styles.percent}>{progress.toFixed(0)}%</span>
         </div>
       </div>

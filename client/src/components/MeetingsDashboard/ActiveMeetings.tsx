@@ -1,16 +1,17 @@
-import { Link } from "react-router-dom";
 import { Meeting } from "../../types";
 import { getRounderTimeOneHourLater } from "../../utils/dateTimeHelpers";
 import ActiveMeetingCard from "../ActiveMeetingCard/ActiveMeetingCard";
 import Button from "../Button/Button";
 import { H2 } from "../Typography";
 import styles from './ActiveMeetings.module.css';
-
+import { useNavigate } from "react-router-dom";
 interface Props {
   meetings: Meeting[];
 }
 
 const ActiveMeetings = ({ meetings }: Props) => {
+
+  const navigate = useNavigate();
 
   const meeting: Meeting = {
     endTime: getRounderTimeOneHourLater(),
@@ -34,7 +35,7 @@ const ActiveMeetings = ({ meetings }: Props) => {
       )}
 
       <ActiveMeetingCard meeting={meeting} />
-      <Button onClick={() => console.log("clicked")}>New meeting</Button>
+      <Button onClick={() => navigate("/create")}>New meeting</Button>
     </article>
   )
 }
