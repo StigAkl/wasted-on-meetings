@@ -1,6 +1,7 @@
-import { CalendarIcon } from '../Icons/CalendarIcon';
-import { ClockIcon } from '../Icons/ClockIcon';
-import { MoneyBagIcon } from '../Icons/MoneyBagIcon';
+import DataCard from '@wom/DataCard/DataCard';
+import { CalendarIcon } from '@wom/Icons/CalendarIcon';
+import { ClockIcon } from '@wom/Icons/ClockIcon';
+import { MoneyBagIcon } from '@wom/Icons/MoneyBagIcon';
 import { H2 } from '../Typography';
 import { Summary } from './MeetingsDashboard';
 import styles from './MeetingSummary.module.css';
@@ -15,39 +16,21 @@ const formatter = new Intl.NumberFormat('no-NO', {
 });
 
 const MeetingSummary = ({ summary }: Props) => {
+
+  const cost = formatter.format(summary.cost);
+  const hours = summary.hours.toFixed(1);
+  const meetings = summary.meetings.toString()
+
   return (
-    <>
+    <section className={styles.summaryContainer}>
       <div className={styles.dividingLine}></div>
       <H2 variant='gradient'>Meeting Summary</H2>
-      <div className={styles.cardContainer}>
-        <div className={styles.card}>
-          <div className={styles.icon}>
-            <CalendarIcon />
-          </div>
-          <span className={styles.data}>
-            {summary.meetings}
-          </span>
-          <span className={styles.cardTitle}>Meetings</span>
-        </div>
-        <div className={styles.card}>
-          <div className={styles.icon}>
-            <ClockIcon />
-          </div>
-          <span className={styles.data}>
-            {summary.hours.toFixed(1)}
-          </span>
-          <span className={styles.cardTitle}>Hours spent</span>
-
-        </div>
-        <div className={styles.card}>
-          <div className={styles.icon}>
-            <MoneyBagIcon />
-          </div>
-          <span className={styles.data}>{formatter.format(summary.cost)}</span>
-          <span className={styles.cardTitle}>Total Cost</span>
-        </div>
-      </div>
-    </>
+      <DataCard.Container>
+        <DataCard title="Meetings" data={meetings} icon={<CalendarIcon />} />
+        <DataCard title="Hours spent" data={hours} icon={<ClockIcon />} />
+        <DataCard title="Total Cost" data={cost} icon={<MoneyBagIcon />} />
+      </DataCard.Container>
+    </section>
   )
 }
 
