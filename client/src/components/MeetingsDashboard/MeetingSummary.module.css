@@ -1,0 +1,21 @@
+.summaryContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 960px;
+}
+
+.dividingLine {
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    var(--color-form-background),
+    transparent
+  );
+  background-size: 100% 1px;
+  background-position: bottom;
+  width: 100%;
+  height: 1px;
+  margin-top: 50px;
+}

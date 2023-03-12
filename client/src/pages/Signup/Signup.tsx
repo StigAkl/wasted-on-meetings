@@ -1,13 +1,12 @@
 import css from './Signup.module.css';
-import Container from '../../components/Container/Container';
-import Button from '../../components/Button/Button';
+import Container from '@wom/Container/Container';
+import Button from '@wom/Button/Button';
 import useSignupForm from '../../hooks/useSignupForm';
 import { signUpUrl } from '../../constants/api';
-import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import FormCard from '../../components/FormCard/FormCard';
-import EmailInput from '../../components/FormCard/EmailInput';
-import PasswordInput from '../../components/FormCard/PasswordInput';
+import FormCard from '@wom/FormCard/FormCard';
+import EmailInput from '@wom/FormCard/EmailInput';
+import PasswordInput from '@wom/FormCard/PasswordInput';
 
 const Signup = () => {
 
@@ -24,18 +23,20 @@ const Signup = () => {
   const passwordError = formValidation.passwordError ? true : false;
 
   return (
-    <Container variant='gradient'>
-      <FormCard title="Sign up">
-        <form onSubmit={handleSubmit}>
-          <EmailInput error={emailError} onChange={handleInputChange} />
-          <PasswordInput error={passwordError} onChange={handleInputChange} />
-          <Button loading={loading} >Sign up</Button>
+    <Container justifyContent="center">
+      <section className={css.signupContainer}>
+        <FormCard title="Sign up">
+          <form onSubmit={handleSubmit}>
+            <EmailInput error={emailError} onChange={handleInputChange} />
+            <PasswordInput error={passwordError} onChange={handleInputChange} />
+            <Button loading={loading} variant='gradient'>Sign up</Button>
 
-          {error && <p className={css.signupError}>*{error}</p>}
-          {success && <p>Brukeren din er opprettet!
-            <Link to="/login">Klikk her</Link> for å logge inn</p>}
-        </form>
-      </FormCard>
+            {error && <p>*{error}</p>}
+            {success && <p>Brukeren din er opprettet!
+              <Link to="/login">Klikk her</Link> for å logge inn</p>}
+          </form>
+        </FormCard>
+      </section>
     </Container>
 
   );

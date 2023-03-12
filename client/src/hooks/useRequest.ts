@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { refreshUrl } from "../constants/api";
 import { ACCESS_TOKEN, RFT } from "../constants/constants";
 import { clearStorage, getToken, setToken } from "../utils/token";

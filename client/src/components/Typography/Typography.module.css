@@ -1,0 +1,13 @@
+@import "../../variables.module.css";
+
+.pinkLight {
+  color: var(--h2-color);
+  font-size: 35px;
+  font-weight: 500;
+}
+
+@media (max-width: 960px) {
+  .pinkLight {
+    font-size: 28px;
+  }
+}

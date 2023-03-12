@@ -5,11 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { authUrl } from "../../constants/api";
 import { clearStorage, setTokens } from "../../utils/token";
-import FormCard from "../../components/FormCard/FormCard";
-import EmailInput from "../../components/FormCard/EmailInput";
-import PasswordInput from "../../components/FormCard/PasswordInput";
-import Container from "../../components/Container/Container";
-import Button from "../../components/Button/Button";
+import FormCard from "@wom/FormCard/FormCard";
+import EmailInput from "@wom/FormCard/EmailInput";
+import PasswordInput from "@wom/FormCard/PasswordInput";
+import Container from "@wom/Container/Container";
+import Button from "@wom/Button/Button";
 
 const Login = () => {
 
@@ -70,14 +70,16 @@ const Login = () => {
   }
 
   return (
-    <Container variant='gradient'>
-      <FormCard title="Login">
-        <form onSubmit={handleSubmit}>
-          <EmailInput onChange={handleEmailChange} />
-          <PasswordInput onChange={handlePasswordChange} />
-          <Button loading={loading}>Login</Button>
-        </form>
-      </FormCard>
+    <Container justifyContent="center">
+      <section className={css.loginContainer}>
+        <FormCard title="Login">
+          <form onSubmit={handleSubmit}>
+            <EmailInput onChange={handleEmailChange} />
+            <PasswordInput onChange={handlePasswordChange} />
+            <Button loading={loading} variant='gradient'>Login</Button>
+          </form>
+        </FormCard>
+      </section>
     </Container>
   )
 };
