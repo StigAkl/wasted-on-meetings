@@ -1,23 +1,18 @@
-const mysql = require("mysql");
+const { Pool } = require("pg");
 
 const connection = {
-  database: process.env.DB_NAME,
-  host: process.env.DB_HOST,
   user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 };
 
 let database;
 
 const getConnection = async () => {
   if (!database) {
-    database = new mysql.createConnection(connection);
-    await database.connect(function (err) {
-      if (err) {
-        console.log("Error connecting to database:", err);
-        throw err;
-      }
-    });
+    database = new Pool(connection);
   }
   return database;
 };
