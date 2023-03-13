@@ -17,8 +17,8 @@ const getUserById = async (id) => {
     values: [id],
   };
 
-  const user = await database.query(query);
-  return user;
+  const result = await database.query(query);
+  return result.rows[0];
 };
 
 const createUser = async (email, password) => {
