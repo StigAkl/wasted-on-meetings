@@ -1,47 +1,33 @@
 const getConnection = require("../dbconnection");
 
 const fetchUser = async (email) => {
+  const query = {
+    text: "SELECT * FROM users WHERE email=$1",
+    values: [email],
+  };
   const database = await getConnection();
-  return new Promise((resolve, reject) => {
-    database.query("SELECT * FROM Users where email=?", [email], (err, row) => {
-      if (err) {
-        reject(err);
-      }
-      resolve(row);
-    });
-  });
+  const result = await database.query(query);
+  return result.rows[0];
 };
 
 const getUserById = async (id) => {
   const database = await getConnection();
-  return new Promise((resolve, reject) => {
-    database.query(
-      "SELECT id,email FROM Users WHERE id = ?",
-      [id],
-      (err, row) => {
-        if (err) {
-          reject(err);
-        }
-        resolve(row);
-      }
-    );
-  });
+  const query = {
+    text: "SELECT id, email FROM users WHERE id = $1",
+    values: [id],
+  };
+
+  const user = await database.query(query);
+  return user;
 };
 
 const createUser = async (email, password) => {
   const database = await getConnection();
-  return new Promise((resolve, reject) => {
-    database.query(
-      "INSERT INTO Users(email, password) VALUES(?,?)",
-      [email, password],
-      (err) => {
-        if (err) {
-          return reject(err);
-        }
-        return resolve();
-      }
-    );
-  });
+  const query = {
+    text: "INSERT INTO users(email, password) VALUES($1, $2)",
+    values: [email, password],
+  };
+  await database.query(query);
 };
 
 process.on("SIGINT", () => {
