@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 //app.use(bodyParser.urlencoded({ extended: true }));
 app.enable("trust proxy");
-//app.use(morgan("combined"));
+app.use(morgan("combined"));
 app.use(cors);
 app.use(commonResponse);
 
