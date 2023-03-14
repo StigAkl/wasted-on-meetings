@@ -26,5 +26,8 @@ app.get("/hello", (req, res) => {
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/meeting", meetingRouter);
+app.get("/healtz", (req, res) => {
+  res.status(200).send("healthy");
+});
 
 module.exports = app;
